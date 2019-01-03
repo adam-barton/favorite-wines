@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :redirect_if_not_logged_in, only: [:new, :create]
 
   def new
   end
@@ -7,6 +8,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-  end
+       session.delete :user_id
+
+       redirect_to root_path
+   end
 
 end
