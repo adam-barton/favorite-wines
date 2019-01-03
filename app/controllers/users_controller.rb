@@ -23,6 +23,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-      params.require(:user).permit(:name, :password_digest)
+      params.require(:user).permit(:name, :password)
     end
 end
