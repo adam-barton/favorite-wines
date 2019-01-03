@@ -14,13 +14,13 @@
   <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
-        <a class="navbar-brand" href="<%= current_user_path %>"/>Home</a>
+        <a class="navbar-brand" href="<%= current_user_path %>">Home</a>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <% if current_user %>
               <li><%= link_to "New Wine", current_user_path %></li>
               <li><%= link_to "New Review", current_user_path %></li>
-              <li><%= link_to "Log Out", signout_path, method: :delete %></li>
+              <li></li>
             <% else %>
               <li><%= link_to "Sign Up", new_user_path %></li>
               <li><%= link_to "Sign In", signin_path %></li>

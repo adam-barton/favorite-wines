@@ -52,6 +52,8 @@
    text-align: left;
  }
 
+
+
  @media only screen and (max-width: 900px) {
    .tagline {
      display: none;
