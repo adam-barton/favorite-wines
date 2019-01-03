@@ -16,9 +16,11 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+
  body {
    padding-top: 70px;
    padding-bottom: 30px;
+   background-color: #BDC6CE;
  }
 
  .theme-dropdown .dropdown-menu {
@@ -48,4 +50,10 @@
  .info {
    height: 290px;
    text-align: left;
+ }
+
+ @media only screen and (max-width: 900px) {
+   .tagline {
+     display: none;
+   }
  }

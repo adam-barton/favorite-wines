@@ -3,8 +3,9 @@ class ApplicationController < ActionController::Base
   before_action :redirect_if_not_logged_in
 
   def current_user
-    @user = (User.find_by_id(session[:user_id]) || User.new)
-  end
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
+      helper_method :current_user
 
   def logged_in?
     session[:user_id]
