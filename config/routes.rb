@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :wines
+  resources :wines do
+    resources :ratings
+  end
+
   resources :users, only: [:new, :create, :show]
-  resources :ratings
+
 
   root 'welcome#home'
 

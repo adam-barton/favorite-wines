@@ -13,15 +13,8 @@ class Wine < ActiveRecord::Base
     message: "should be a four-digit year"
   }
 
- #  def unique_bottle
- #    @wine = Wine.
- #    self.label.downcase + self.grape.downcase + self.year
- #  end
- #
- #  def expiration_date_cannot_be_in_the_past
- #   if expiration_date.present? && expiration_date < Date.today
- #     errors.add(:expiration_date, "can't be in the past")
- #   end
- # end
+  def full_name
+    self.year + " " + self.label + " " + self.grape
+  end
 
 end
