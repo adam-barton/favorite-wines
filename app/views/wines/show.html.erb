@@ -1,9 +1,11 @@
 <h1><%= wine_name(@wine) %></h1>
-<h2>Reviews:</h2>
-<ul>
-  <% @wine.ratings.each do |review| %>
-  <li> <%= review.user.name %>: <%= show_stars(review.stars) %> -
-    <%= link_to "Read review", wine_rating_path(@wine, review) %> </li>
-  <% end %>
-</ul>
+<p>Label: <%= @wine.label %></p>
+<p>Type: <%= @wine.category %></p>
+<p>Grape: <%= @wine.grape %></p>
+<p>Year: <%= @wine.year %></p>
+<% if @wine.region %>
+<p>Region: <%= @wine.region %></p>
+<% end %>
+<p>Average Rating: <%= show_stars(@wine.average_rating) %>  </p><br>
+<h2><%= link_to "Read reviews", wine_ratings_path(@wine) %></h2>
 <%= link_to "Add a review", edit_wine_path %>

@@ -10,7 +10,15 @@ class RatingsController < ApplicationController
   end
 
   def show
-    @rating = Rating.find(params[:id])
+      @rating = Rating.find(params[:id])
+  end
+
+  def new
+    @rating = Rating.new
+  end
+
+  def create
+
   end
 
 end
