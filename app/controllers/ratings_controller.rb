@@ -18,7 +18,13 @@ class RatingsController < ApplicationController
   end
 
   def create
-
   end
 
+  def edit
+    @rating = Rating.find_by(id: params[:id])
+  end
+
+  def update
+
+  end
 end

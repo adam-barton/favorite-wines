@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_03_012728) do
+ActiveRecord::Schema.define(version: 2019_01_04_233859) do
 
   create_table "ratings", force: :cascade do |t|
     t.integer "user_id"
     t.integer "wine_id"
     t.integer "stars"
+    t.text "comments"
   end
 
   create_table "users", force: :cascade do |t|
