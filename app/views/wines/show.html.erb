@@ -1,9 +1,9 @@
 <h1><%= wine_name(@wine) %></h1>
 <h2>Reviews:</h2>
-<%= link_to "Reviews", wine_ratings_path %>
 <ul>
-  <li>...</li>
-  <li>...</li>
-  <li>...</li>
+  <% @wine.ratings.each do |review| %>
+  <li> <%= review.user.name %>: <%= show_stars(review.stars) %> -
+    <%= link_to "Read review", wine_rating_path(@wine, review) %> </li>
+  <% end %>
 </ul>
 <%= link_to "Add a review", edit_wine_path %>
