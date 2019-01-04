@@ -14,8 +14,8 @@ class WinesController < ApplicationController
   end
 
   def create
-    @wine = Wine.new(wine_params)
-    if @wine.save
+     @wine = Wine.find_or_create_by(wine_params)
+    if @wine
       redirect_to @wine
     else
       render new
@@ -31,6 +31,7 @@ class WinesController < ApplicationController
   end
 
   private
+
 
   def wine_params
       params.require(:wine).permit(:label, :category, :grape, :year, :region)
