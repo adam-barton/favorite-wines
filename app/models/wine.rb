@@ -17,4 +17,8 @@ class Wine < ActiveRecord::Base
     self.year + " " + self.label + " " + self.grape
   end
 
+  def average_rating
+    Rating.where(wine_id: self.id).average(:stars).to_i
+  end
+
 end

@@ -1,7 +1,8 @@
 <h1>Wines!</h1>
 <div class="container"  role="main">
   <% @wines.each do |wine| %>
-  <p><%= link_to wine_name(wine), wine_path(wine) %> </p>
+  <p><%= link_to wine_name(wine), wine_path(wine) %> <br>
+   <%= show_stars(wine.average_rating) %>  </p><br>
   <% end %>
 </div>
 <div>

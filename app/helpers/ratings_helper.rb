@@ -1,7 +1,7 @@
 module RatingsHelper
 
   def show_stars(rating)
-    case rating.stars
+    case rating
     when 5
       "⭐️""⭐️""⭐️""⭐️""⭐️"
     when 4
@@ -12,6 +12,8 @@ module RatingsHelper
       "⭐️""⭐️"
     when 1
       "⭐️"
+    else
+    "No ratings yet. Be the first?  🌠"
     end
   end
 
