@@ -1,1 +1,4 @@
 <h1>Wines!</h1>
+<% @wines.each do |wine| %>
+  <p> <%= wine.label %> <%= wine.grape %> <%= wine.year %> </p>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_03_022621) do
+ActiveRecord::Schema.define(version: 2019_01_03_012728) do
 
   create_table "ratings", force: :cascade do |t|
     t.integer "user_id"
@@ -25,8 +25,10 @@ ActiveRecord::Schema.define(version: 2019_01_03_022621) do
 
   create_table "wines", force: :cascade do |t|
     t.string "label"
-    t.string "type"
+    t.string "category"
+    t.string "grape"
     t.integer "year"
+    t.string "region"
   end
 
 end
