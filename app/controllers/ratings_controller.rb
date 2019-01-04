@@ -2,7 +2,8 @@ class RatingsController < ApplicationController
 
   def index
     if params[:wine_id]
-      @ratings = Wine.find(params[:wine_id]).ratings
+      @wine = Wine.find(params[:wine_id])
+      @ratings = @wine.ratings
     else
       @ratings = Ratings.all
     end
