@@ -13,9 +13,13 @@ class WinesController < ApplicationController
     @wine = Wine.new
   end
 
-  def creat
-    
-
+  def create
+    @wine = Wine.new(wine_params)
+    if @wine.save
+      redirect_to @wine
+    else
+      render new
+    end
   end
 
   def edit
@@ -24,6 +28,12 @@ class WinesController < ApplicationController
 
   def update
 
+  end
+
+  private
+
+  def wine_params
+      params.require(:wine).permit(:label, :category, :grape, :year, :region)
   end
 
 end
