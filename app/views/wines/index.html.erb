@@ -2,6 +2,8 @@
 <div class="container"  role="main">
   <% @wines.each do |wine| %>
   <p><%= link_to wine_name(wine), wine_path(wine) %> </p>
-    <!-- <p> <%= wine.label %> <%= wine.grape %> <%= wine.year %> </p> -->
   <% end %>
+</div>
+<div>
+<h3> <%= link_to "Add a new wine", new_wine_path %> </h3>
 </div>

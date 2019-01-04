@@ -1,10 +1,5 @@
 class WinesController < ApplicationController
 
-  # before_action :find_wine except: [:index, :new, :update]
-  #
-  # def find_wine
-  #   @wine = Wine.find_by(id: params[:id])
-  # end
 
   def index
     @wines = Wine.all
@@ -19,6 +14,7 @@ class WinesController < ApplicationController
   end
 
   def creat
+    
 
   end
 
