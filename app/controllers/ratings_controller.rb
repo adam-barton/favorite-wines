@@ -14,10 +14,28 @@ class RatingsController < ApplicationController
   end
 
   def new
-    @rating = Rating.new(wine_id: params[:wine_id])
+    @wine = Wine.find_by(id: params[:wine_id])
+    @rating = Rating.new
   end
 
   def create
+    @wine = Wine.find_by(params[:wine_id])
+    @rating = @wine.ratings.create(user_id: current_user.id,
+       wine_id: @wine.id,
+       stars: params[:rating][:stars],
+       comments: params[:rating][:comments]
+      )
+    redirect_to wine_rating_path(@wine, @rating)
+    # @rating = Rating.new
+    # @rating.user_id = current_user.id
+    # @rating.wine_id = params[:wine_id]
+    # @rating.stars = params[:rating][:stars]
+    # @rating.comments = params[:rating][:comments]
+    #   if @rating.save
+    #     redirect_to rating_path(@rating)
+    #   else
+    #     render :new
+    #   end
   end
 
   def edit

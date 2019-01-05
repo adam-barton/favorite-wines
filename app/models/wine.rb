@@ -1,7 +1,7 @@
 class Wine < ActiveRecord::Base
 
   has_many :ratings
-  has_many :user, through: :ratings
+  has_many :users, through: :ratings
 
   validates :label, :grape, :year, :category, presence: true
   validates :year,
