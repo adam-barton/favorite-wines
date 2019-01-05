@@ -27,6 +27,7 @@ class RatingsController < ApplicationController
     @rating = @wine.ratings.create(user_id: current_user.id,
        wine_id: @wine.id,
        stars: params[:rating][:stars],
+       taste: params[:rating][:taste],
        comments: params[:rating][:comments]
       )
     redirect_to wine_rating_path(@wine, @rating)
@@ -44,6 +45,7 @@ class RatingsController < ApplicationController
     @wine = Wine.find_by(params[:wine_id])
     @rating = @wine.ratings.update(
       stars: params[:rating][:stars],
+      taste: params[:rating][:taste],
       comments: params[:rating][:comments]
     )
 

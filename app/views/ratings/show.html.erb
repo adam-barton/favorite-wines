@@ -5,6 +5,7 @@
 <h3>Comments: </h3>
 <p><%= @rating.comments %></p>
 <h3>Tasting Notes: </h3>
+<p><%= @rating.taste %></p>
 <% if current_user == @rating.user %>
   <%= link_to "Edit Review", edit_wine_rating_path(@rating.wine, @rating) if @rating.wine %>
 <% end %>
