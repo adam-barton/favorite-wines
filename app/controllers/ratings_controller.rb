@@ -5,7 +5,7 @@ class RatingsController < ApplicationController
       @wine = Wine.find(params[:wine_id])
       @ratings = @wine.ratings
     else
-      @ratings = Ratings.all
+      @ratings = Rating.all
     end
   end
 
@@ -14,7 +14,7 @@ class RatingsController < ApplicationController
   end
 
   def new
-    @rating = Rating.new
+    @rating = Rating.new(wine_id: params[:wine_id])
   end
 
   def create
@@ -26,5 +26,11 @@ class RatingsController < ApplicationController
 
   def update
 
+  end
+
+private
+
+  def rating_params
+    params.require(:rating).permit(:user_id, :wine_id, :stars, :comments)
   end
 end

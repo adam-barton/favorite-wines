@@ -8,4 +8,4 @@
 <% end %>
 <p>Average Rating: <%= show_stars(@wine.average_rating) %>  </p><br>
 <h2><%= link_to "Read reviews", wine_ratings_path(@wine) %></h2>
-<%= link_to "Add a review", edit_wine_path %>
+<p><%= link_to "Add a review", new_wine_rating_path(@wine) %></p>

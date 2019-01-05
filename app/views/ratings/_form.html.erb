@@ -1,0 +1,12 @@
+<p>Hello</p>
+<%= form_for(@rating) do |f| %>
+
+
+  <%= wine_id_field(@rating) %>
+
+  <%= f.label :stars %>
+  <%= f.select :stars, [[1], [2], [3], [4], [5]] %><br>
+  <%= f.label :comments %>
+  <%= f.text_area :comments %>
+  <%= f.submit %>
+<% end %>
