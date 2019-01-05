@@ -14,8 +14,12 @@ class RatingsController < ApplicationController
   end
 
   def new
-    @wine = Wine.find_by(id: params[:wine_id])
-    @rating = Rating.new
+    if params[:wine_id] && !Wine.exists?(params[:wine_id])
+      redirect_to wines_path, alert: "Wine not found."
+   else
+      @wine = Wine.find_by(id: params[:wine_id])
+      @rating = Rating.new
+    end
   end
 
   def create
@@ -26,24 +30,24 @@ class RatingsController < ApplicationController
        comments: params[:rating][:comments]
       )
     redirect_to wine_rating_path(@wine, @rating)
-    # @rating = Rating.new
-    # @rating.user_id = current_user.id
-    # @rating.wine_id = params[:wine_id]
-    # @rating.stars = params[:rating][:stars]
-    # @rating.comments = params[:rating][:comments]
-    #   if @rating.save
-    #     redirect_to rating_path(@rating)
-    #   else
-    #     render :new
-    #   end
   end
 
   def edit
+    @wine = Wine.find_by(params[:wine_id])
     @rating = Rating.find_by(id: params[:id])
+    if @rating.user_id != current_user.id
+      redirect_to wines_path
+    end
   end
 
   def update
+    @wine = Wine.find_by(params[:wine_id])
+    @rating = @wine.ratings.update(
+      stars: params[:rating][:stars],
+      comments: params[:rating][:comments]
+    )
 
+    redirect_to wine_rating_path(@wine, @rating)
   end
 
 private
