@@ -13,6 +13,8 @@ class Wine < ActiveRecord::Base
     message: "should be a four-digit year"
   }
 
+  scope :regions, -> (region) { where region: region }
+
   def full_name
     self.year + " " + self.label + " " + self.grape
   end
@@ -21,7 +23,11 @@ class Wine < ActiveRecord::Base
     Rating.where(wine_id: self.id).average(:stars).to_i
   end
 
-  def popular
+  def self.filters
+    @wine = Wine.regions
+  end
+
+  def sort_by_region
     
   end
 

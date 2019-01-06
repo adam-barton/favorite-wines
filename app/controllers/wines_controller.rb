@@ -32,6 +32,10 @@ class WinesController < ApplicationController
   end
 
   def filter
+    raise params.inspect
+
+    # @filter = params[:filter]
+    @wine = Wine.filters
 
   end
 
