@@ -7,3 +7,11 @@
 <div>
 <h3> <%= link_to "Add a new wine", new_wine_path %> </h3>
 </div>
+<div class="sort-form">
+  <%= form_tag 'wines/filter' do %>
+      <label>Sort by:</label>
+      <%= select_tag ["Category", "Region", ["White"], ["White Blend"], ["Sparkling"], ["Rosè"]] %>
+      <%= submit_tag "Submit" %>
+    <% end %>
+
+</div>

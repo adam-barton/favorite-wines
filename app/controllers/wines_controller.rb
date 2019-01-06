@@ -31,6 +31,10 @@ class WinesController < ApplicationController
       redirect_to @wine
   end
 
+  def filter
+
+  end
+
   private
 
 

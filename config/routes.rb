@@ -13,4 +13,6 @@ Rails.application.routes.draw do
     post '/signin' => 'sessions#create'
     post '/signout' => 'sessions#destroy'
     delete "/signout", to: "sessions#destroy"
+
+    post '/filter' => 'wines#filter'
 end
