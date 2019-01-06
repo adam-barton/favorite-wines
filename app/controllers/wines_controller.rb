@@ -14,10 +14,11 @@ class WinesController < ApplicationController
 
   def create
      @wine = Wine.find_or_create_by(wine_params)
-    if @wine
+    if @wine.valid?
+      @wine.save
       redirect_to @wine
     else
-      render new
+      render :new
     end
   end
 

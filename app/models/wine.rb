@@ -6,7 +6,6 @@ class Wine < ActiveRecord::Base
   validates :label, :grape, :year, :category, presence: true
   validates :year,
     numericality: { only_integer: true },
-    length: { is: 4 },
     inclusion: { in: 1900..Time.current.year },
     format: {
     with: /(19|20)\d{2}/i,
@@ -14,6 +13,7 @@ class Wine < ActiveRecord::Base
   }
 
   scope :regions, -> (region) { where region: region }
+   scope :year, -> (year) { where year: year }
 
   def full_name
     self.year + " " + self.label + " " + self.grape
@@ -21,14 +21,6 @@ class Wine < ActiveRecord::Base
 
   def average_rating
     Rating.where(wine_id: self.id).average(:stars).to_i
-  end
-
-  def self.filters
-    @wine = Wine.regions
-  end
-
-  def sort_by_region
-    
   end
 
 end

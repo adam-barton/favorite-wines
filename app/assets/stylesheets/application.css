@@ -52,6 +52,10 @@
    text-align: left;
  }
 
+ .field_with_errors {
+   border: 2px solid red;
+ }
+
 
 
  @media only screen and (max-width: 900px) {
