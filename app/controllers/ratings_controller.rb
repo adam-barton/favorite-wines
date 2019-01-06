@@ -19,6 +19,7 @@ class RatingsController < ApplicationController
    else
       @wine = Wine.find_by(id: params[:wine_id])
         if @rating = Rating.find_by(wine_id: @wine.id, user_id: current_user.id)
+           flash[:message] = "You've already reviewed this wine."
           redirect_to wine_rating_path(@wine, @rating)
         end
       @rating = Rating.new

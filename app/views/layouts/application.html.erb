@@ -38,6 +38,12 @@
 
     <!-- content -->
     <div class="container"  role="main">
+      <p id="notice"><%= notice %></p>
+        <% if flash[:message] %>
+          <div class="notice">
+            <p><%= flash[:message] %></p>
+          </div>
+          <% end %>
       <%= yield %>
     </div>
   </body>

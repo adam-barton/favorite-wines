@@ -17,7 +17,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def already_rated?(wine_id)
-    current_user.users_ratings.include?(wine_id)
-  end
 end
