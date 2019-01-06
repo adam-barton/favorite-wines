@@ -15,7 +15,7 @@ class RatingsController < ApplicationController
 
   def new
     if params[:wine_id] && !Wine.exists?(params[:wine_id])
-      redirect_to wines_path, alert: "Wine not found."
+      redirect_to wines_path, flash[:message] = "Wine not found."
    else
       @wine = Wine.find_by(id: params[:wine_id])
         if @rating = Rating.find_by(wine_id: @wine.id, user_id: current_user.id)
@@ -56,9 +56,4 @@ class RatingsController < ApplicationController
     redirect_to wine_rating_path(@wine, @rating)
   end
 
-private
-
-  def rating_params
-    params.require(:rating).permit(:user_id, :wine_id, :stars, :comments)
-  end
 end
