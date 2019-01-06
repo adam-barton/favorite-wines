@@ -23,7 +23,7 @@ class RatingsController < ApplicationController
   end
 
   def create
-    @wine = Wine.find_by(params[:wine_id])
+    @wine = Wine.find_by(id: params[:wine_id])
     @rating = @wine.ratings.create(user_id: current_user.id,
        wine_id: @wine.id,
        stars: params[:rating][:stars],
@@ -34,7 +34,7 @@ class RatingsController < ApplicationController
   end
 
   def edit
-    @wine = Wine.find_by(params[:wine_id])
+    @wine = Wine.find_by(id: params[:wine_id])
     @rating = Rating.find_by(id: params[:id])
     if @rating.user_id != current_user.id
       redirect_to wines_path
@@ -42,7 +42,7 @@ class RatingsController < ApplicationController
   end
 
   def update
-    @wine = Wine.find_by(params[:wine_id])
+    @wine = Wine.find_by(id: params[:wine_id])
     @rating = @wine.ratings.update(
       stars: params[:rating][:stars],
       taste: params[:rating][:taste],
