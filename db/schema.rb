@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_05_235232) do
+ActiveRecord::Schema.define(version: 2019_01_06_025805) do
 
   create_table "ratings", force: :cascade do |t|
     t.integer "user_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_01_05_235232) do
     t.string "grape"
     t.integer "year"
     t.string "region"
+    t.integer "creator_id"
   end
 
 end

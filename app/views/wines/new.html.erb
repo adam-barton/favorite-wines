@@ -1,15 +1,3 @@
 <h1>Add a new wine</h1>
 
-<%= form_for @wine do |w| %>
-  <%= w.label "Label: " %>
-  <%= w.text_field :label %><br>
-  <%= w.label "Category: " %>
-  <%= w.select :category, [["Red"], ["Red Blend"], ["White"], ["White Blend"], ["Sparkling"], ["Rosè"]] %><br>
-  <%= w.label "Grape: " %>
-  <%= w.text_field :grape %><br>
-  <%= w.label "Year: " %>
-  <%= w.text_field :year %><br> 
-  <%= w.label "Region:" %>
-  <%= w.text_field :region %><br><br>
-  <%= w.submit %>
-<% end %>
+<%= render partial: 'form' %>

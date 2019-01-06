@@ -10,3 +10,6 @@
 <p>Average Rating: <%= show_stars(@wine.average_rating) %>  </p><br>
 <h2><%= link_to "Read reviews", wine_ratings_path(@wine) %></h2>
 <p><%= link_to "Add a review", new_wine_rating_path(@wine) %></p>
+<% if @wine.creator_id == current_user.id %>
+  <%= link_to "Edit this bottle", edit_wine_path %>
+<% end %>
