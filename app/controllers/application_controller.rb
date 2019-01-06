@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def already_rated?(wine_id)
+    current_user.users_ratings.include?(wine_id)
+  end
 end

@@ -18,6 +18,9 @@ class RatingsController < ApplicationController
       redirect_to wines_path, alert: "Wine not found."
    else
       @wine = Wine.find_by(id: params[:wine_id])
+        if @rating = Rating.find_by(wine_id: @wine.id, user_id: current_user.id)
+          redirect_to wine_rating_path(@wine, @rating)
+        end
       @rating = Rating.new
     end
   end
