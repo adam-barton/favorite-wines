@@ -1,8 +1,13 @@
 
 
 <h1><%= @current_user.name %></h1>
-<div class="navbar-brand">
-<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-    <input type=submit value='Log Out'>
-    <% end %>
-    </div>
+
+    <br><br>
+<div>
+    <h3>Your reviews:</h3>
+      <ul>
+        <% @current_user.users_ratings.each do |r| %>
+        <li><%= link_to wine_name(r.wine), wine_path(r.wine) %> - <%= show_stars(r.stars) %></li>
+        <% end %>
+      </ul>
+</div>

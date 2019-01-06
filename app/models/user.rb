@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  def  users_ratings
+      Rating.where(user_id: self.id)
+  end
+
 end
