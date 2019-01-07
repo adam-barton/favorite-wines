@@ -14,5 +14,8 @@ Rails.application.routes.draw do
     post '/signout' => 'sessions#destroy'
     delete "/signout", to: "sessions#destroy"
 
+    get '/auth/:provider/callback' => 'sessions#create'
+    
+
     post '/filter' => 'wines#filter'
 end

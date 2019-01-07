@@ -1,7 +1,7 @@
 <h1>Sign in</h1>
 <%= form_for :user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
+  <%= f.label :email %>
+  <%= f.text_field :email %><br>
   <%= f.label :password %>
   <%= f.password_field :password %><br><br>
   <%= f.submit "Sign in" %>
