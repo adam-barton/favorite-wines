@@ -16,6 +16,4 @@ Rails.application.routes.draw do
 
     get '/auth/:provider/callback' => 'sessions#create'
     
-
-    post '/filter' => 'wines#filter'
 end

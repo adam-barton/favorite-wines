@@ -8,7 +8,17 @@ class SessionsController < ApplicationController
 
   def create
     if auth_hash = request.env["omniauth.auth"]
+      oauth_email = request.env["omniauth.auth"]["info"]["email"]
+      oauth_name = auth_hash["info"]["name"]
+      if @user = User.find_by(email: oauth_email)
+        session[:user_id] = @user.id
+        redirect_to @user
+      else
+        @user = User.new(email: oauth_email, name: oauth_name)
+        session[:user_id] = @user.id
+        redirect_to @user
 
+      end
     else
       @user = User.find_by(email: params[:user][:email])
         if @user && @user.authenticate(params[:user][:password])
@@ -17,7 +27,7 @@ class SessionsController < ApplicationController
 
             redirect_to @user
         else
-            redirect_to signin_path
+            redirect_to root_path
         end
     end
   end
