@@ -19,9 +19,8 @@
           <ul class="nav navbar-nav">
             <% if current_user %>
               <li><%= link_to "Wines", wines_path %></li>
-              <li><%= link_to "New Review", current_user_path %></li>
-              <div class="navbar-brand">
-              <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+              <div class="nav navbar-brand">
+              <%= form_tag({controller: 'sessions', action: 'destroy', method: 'post'}, {:class=>"nav navbar-nav"}) do %>
                   <input type=submit value='Log Out'>
                   <% end %>
                   </div>
