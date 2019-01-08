@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-  #   skip_before_action :current_user, only: [:create]
-   skip_before_action :redirect_if_not_logged_in, only: [:new, :create]
+    # skip_before_action :current_user, only: [:create]
+    skip_before_action :redirect_if_not_logged_in, only: [:new, :create]
 
   def new
     @user = User.new
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to @user
       else
-        @user = User.new(email: oauth_email, name: oauth_name)
+        @user = User.create(email: oauth_email, name: oauth_name, password: SecureRandom.hex)
         session[:user_id] = @user.id
         redirect_to @user
 
