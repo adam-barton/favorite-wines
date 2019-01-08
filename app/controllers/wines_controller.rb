@@ -10,9 +10,11 @@ class WinesController < ApplicationController
 
   def new
     @wine = Wine.new
+    @wine_regions = Wine.wine_regions
   end
 
   def create
+    raise params.inspect
      @wine = Wine.find_or_create_by(wine_params)
     if @wine.valid?
       @wine.save
@@ -32,13 +34,13 @@ class WinesController < ApplicationController
       redirect_to @wine
   end
 
-  def filter
-    raise params.inspect
-
-    # @filter = params[:filter]
-    @wine = Wine.filters
-
-  end
+  # def filter
+  #   raise params.inspect
+  #
+  #   # @filter = params[:filter]
+  #   @wine = Wine.filters
+  #
+  # end
 
   private
 

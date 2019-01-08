@@ -15,6 +15,7 @@ class Wine < ActiveRecord::Base
   scope :regions, -> (region) { where region: region }
    scope :year, -> (year) { where year: year }
 
+
   def full_name
     self.year + " " + self.label + " " + self.grape
   end
@@ -26,5 +27,14 @@ class Wine < ActiveRecord::Base
   def self.reverse_sort
     order(id: :desc)
   end
+
+  def self.wine_regions
+    where(:region)
+  end
+
+  # def popular
+  #   self.average_rating >= 3
+  #   self.ratings.count
+  # end
 
 end
