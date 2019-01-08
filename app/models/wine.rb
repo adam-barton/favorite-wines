@@ -23,4 +23,8 @@ class Wine < ActiveRecord::Base
     Rating.where(wine_id: self.id).average(:stars).to_i
   end
 
+  def self.reverse_sort
+    order(id: :desc)
+  end
+
 end
