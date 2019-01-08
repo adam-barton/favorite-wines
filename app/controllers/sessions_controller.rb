@@ -14,11 +14,15 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to @user
       else
-        @user = User.create(email: oauth_email, name: oauth_name, password: SecureRandom.hex)
-        session[:user_id] = @user.id
-        redirect_to @user
-
-      end
+        @user = User.new(email: oauth_email, name: oauth_name, password: SecureRandom.hex)
+          if @user.save
+            session[:user_id] = @user.id
+            redirect_to @user
+          else
+            flash[:message] = "You must have an email address."
+            render new_user_path
+          end
+        end
     else
       @user = User.find_by(email: params[:user][:email])
         if @user && @user.authenticate(params[:user][:password])
