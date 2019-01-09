@@ -1,9 +1,7 @@
 
-
 <h1><%= @current_user.name %></h1>
 
-    <br><br>
-<div>
+<div class="list"> 
     <h3>Your reviews:</h3>
       <ul>
         <% @current_user.users_ratings.each do |r| %>

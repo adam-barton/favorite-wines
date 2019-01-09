@@ -15,20 +15,27 @@
         background-color: #E4E4E4;
       }
 
-      .main-body-container {
+        .yielded {
         background-color: white;
         margin: auto;
         text-align: center;
-        width: 75%;
+        width: 65%;
         border: 3px solid black;
-        padding: 10px;
-
-        .home-pic {
-          margin: auto;
-          width: 80%;
+        padding: 10%;
         }
-      }
 
+        .clearfix:after {
+        content: ".";
+        display: block;
+        clear: both;
+        visibility: hidden;
+        height: 0;
+        line-height: 0;
+        }
+        table {
+            margin: auto;
+            text-align: left;
+        }
 
       .group:after {
         content: "";
@@ -36,6 +43,23 @@
         clear: both;
       }
 
+      .home-pic {
+        width: 100%;
+        object-fit: scale-down;
+      }
+      .nav {
+        
+      }
+
+      .navbar-brand.tagline {
+        color: #FAFAD2;
+      }
+
+      .list {
+        text-align: center;
+        position-self: center;
+        padding: 10%;
+      }
 
 
 
@@ -64,7 +88,7 @@
               <li><%= link_to "Sign In", signin_path %></li>
             <% end %>
           </ul>
-        <p class="navbar-brand tagline" style="color: #FAFAD2;"><i>Who, What, When, Where, Wine!</i></p>
+        <p class="navbar-brand tagline"><i>Who, What, When, Where, Wine!</i></p>
         </div>
         </div><!--/.nav-collapse -->
       </div>
@@ -77,10 +101,8 @@
             <p><%= flash[:message] %></p>
           </div>
           <% end %>
-       <div class="group">   
-        <div class="main-body-container">
+      <div class="yielded clearfix">
         <%= yield %>
-        </div>
       </div>
     </div>
   </body>

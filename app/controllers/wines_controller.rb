@@ -13,7 +13,6 @@ class WinesController < ApplicationController
   end
 
   def create
-    raise params.inspect
      @wine = Wine.find_or_create_by(wine_params)
     if @wine.valid?
       @wine.save
