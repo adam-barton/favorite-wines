@@ -16,4 +16,6 @@ Rails.application.routes.draw do
 
     get '/auth/github/callback' => 'sessions#create'
 
+    post '/filter' => "wines#filter"
+
 end

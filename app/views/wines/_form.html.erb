@@ -18,7 +18,6 @@
   <%= w.label "Year: " %>
   <%= w.text_field :year %><br>
   <%= w.label "Region:" %>
-  <%= w.select :region, options_from_collection_for_select(@wine_regions, :region, :region, include_nil: false, include_hidden: false) %>
   <%= w.text_field :region %><br><br>
   <%= w.submit %>
 <% end %>

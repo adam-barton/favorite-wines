@@ -10,7 +10,7 @@
 <div class="sort-form">
   <%= form_tag '/filter' do %>
       <label>Sort by:</label>
-      <%= select_tag "filter", "<option>Region</option><option>Category</option><option>Grape</option><option>Year</option>".html_safe, include_blank: true %>
+      <%= select_tag "filter", "<option>Popularity</option>".html_safe, include_blank: true %>
       <%= submit_tag "Submit" %>
     <% end %>
 

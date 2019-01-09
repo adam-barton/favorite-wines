@@ -17,7 +17,7 @@ class Wine < ActiveRecord::Base
 
 
   def full_name
-    self.year + " " + self.label + " " + self.grape
+    "#{self.year}" + " " + "#{self.label}" + " " + "#{self.grape}"
   end
 
   def average_rating
@@ -28,13 +28,23 @@ class Wine < ActiveRecord::Base
     order(id: :desc)
   end
 
-  def self.wine_regions
-    where(:region)
+
+  def popularity_rating
+    # Wine.all.each do |wine|
+        self.average_rating + self.ratings.count
+    # end
   end
 
-  # def popular
-  #   self.average_rating >= 3
-  #   self.ratings.count
-  # end
+  def popular?
+    if self.average_rating >= 3
+       "#{self.full_name}" + " " + "#{self.popularity_rating}"
+    end
+  end
+
+  def self.popularity
+    Wine.all.each do |wine|
+      wine.popular?
+    end
+  end
 
 end

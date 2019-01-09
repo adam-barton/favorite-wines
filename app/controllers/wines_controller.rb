@@ -10,7 +10,6 @@ class WinesController < ApplicationController
 
   def new
     @wine = Wine.new
-    @wine_regions = Wine.wine_regions
   end
 
   def create
@@ -34,13 +33,11 @@ class WinesController < ApplicationController
       redirect_to @wine
   end
 
-  # def filter
-  #   raise params.inspect
-  #
-  #   # @filter = params[:filter]
-  #   @wine = Wine.filters
-  #
-  # end
+  def filter
+    @wines = Wine.popularity
+
+    render :index
+    end
 
   private
 
