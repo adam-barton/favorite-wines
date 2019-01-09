@@ -1,0 +1,52 @@
+
+ ...
+ @import "bootstrap-sprockets"
+ @import 'bootstrap'
+
+
+ body {
+   padding-top: 70px;
+   padding-bottom: 30px;
+   background-color: #BDC6CE;
+ }
+
+ .theme-dropdown .dropdown-menu {
+   position: static;
+   display: block;
+   margin-bottom: 20px;
+ }
+
+ .theme-showcase > p > .btn {
+   margin: 5px 0;
+ }
+
+ .center {
+   text-align: center;
+ }
+
+ .pic,
+ .info {
+   padding: 20px;
+   display: inline-block;
+   background-color: #eeeeee;
+   border-radius: 7px;
+   vertical-align: middle;
+   margin: 10px;
+ }
+
+ .info {
+   height: 290px;
+   text-align: left;
+ }
+
+ .field_with_errors {
+   border: 2px solid red;
+ }
+
+
+
+ @media only screen and (max-width: 900px) {
+   .tagline {
+     display: none;
+   }
+ }
