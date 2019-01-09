@@ -6,9 +6,43 @@
     Never forget a good wine again. Who, What, When, Where, Wine!">
     <%= csrf_meta_tags %>
 
+    <%= stylesheet_link_tag "/app/assets/stylesheets/app.css" %>
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <style>
+      body {
+        background-color: #E4E4E4;
+      }
+
+      .main-body-container {
+        background-color: white;
+        margin: auto;
+        text-align: center;
+        width: 75%;
+        border: 3px solid black;
+        padding: 10px;
+
+        .home-pic {
+          margin: auto;
+          width: 80%;
+        }
+      }
+
+
+      .group:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+
+
+
+
+
+
+      </style>
 
   </head>
   <body>
@@ -43,7 +77,11 @@
             <p><%= flash[:message] %></p>
           </div>
           <% end %>
-      <%= yield %>
+       <div class="group">   
+        <div class="main-body-container">
+        <%= yield %>
+        </div>
+      </div>
     </div>
   </body>
 </html>

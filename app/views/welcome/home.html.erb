@@ -2,12 +2,12 @@
 <h2>Rate and review all of your favorite, and not so favorite wines.</h2>
 <h3><i>Who, What, When, Where, Wine!</i></h3>
 <br><br>
-<div class="left-pic">
+<div class="home-pic">
    <img src="https://a.optmnstr.com/users/ded0a8e73464/images/bcd57a2beedf1532960477-600-multi-colored-wine-charlie-parker.jpg">
  </div>
 <br><br>
-<p> Create an account to join the millions of people already using <i>Favorite Wines</i>. </p>
+<p> <%= link_to "Create an account", new_user_path %>, or <%= link_to "Sign In", signin_path %> to join the millions of people already using <i>Favorite Wines</i>. </p>
 <br>
 <div>
-  <%= link_to'Log in with Github!', '/auth/github', :class=>"btn btn-social-icon btn-github" %>
+  <%= link_to image_tag("https://lh3.googleusercontent.com/JOb-1edXXl9_rrXDIOmDwMj_aTPyzysn6-vSAq_VV1AYV_M_2gec7TDRBd_R-qchK8j8=s170"), '/auth/github', class: "github_button" %>
 </div>
