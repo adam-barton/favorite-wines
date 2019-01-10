@@ -21,18 +21,14 @@ class RatingsController < ApplicationController
            flash[:message] = "You've already reviewed this wine."
           redirect_to wine_rating_path(@wine, @rating)
         end
-      @rating = Rating.new
+      @rating = Rating.new(:wine_id => @wine.id, :user_id => current_user.id)
     end
   end
 
   def create
     @wine = Wine.find_by(id: params[:wine_id])
-    @rating = @wine.ratings.create(user_id: current_user.id,
-       wine_id: @wine.id,
-       stars: params[:rating][:stars],
-       taste: params[:rating][:taste],
-       comments: params[:rating][:comments]
-      )
+    @rating = @wine.ratings.create(rating_params)
+      
     redirect_to wine_rating_path(@wine, @rating)
   end
 
@@ -54,5 +50,12 @@ class RatingsController < ApplicationController
 
     redirect_to wine_rating_path(@wine, @rating)
   end
+
+private
+
+  def rating_params
+    params.require(:rating).permit(:stars, :taste, :comments, :wine_id, :user_id)
+  end
+
 
 end

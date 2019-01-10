@@ -1,6 +1,7 @@
 <%= form_for [@wine, @rating] do |f| %>
 
-
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :wine_id %>
   <%= f.label :stars %>
   <%= f.select :stars, [[1], [2], [3], [4], [5]] %><br><br>
   <%= f.label "Tastinng Notes" %>
