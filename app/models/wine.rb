@@ -30,9 +30,7 @@ class Wine < ActiveRecord::Base
 
 
   def popularity_rating
-    # Wine.all.each do |wine|
         self.average_rating + self.ratings.count
-    # end
   end
 
   def popular?

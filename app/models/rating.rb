@@ -7,4 +7,5 @@ class Rating < ActiveRecord::Base
   validates :stars, presence: true
 
 
+
 end
