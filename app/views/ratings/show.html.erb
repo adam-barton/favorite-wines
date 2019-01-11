@@ -1,4 +1,4 @@
-<%= link_to "Back", wine_ratings_path(@rating.wine) %>
+<%= link_to "Back to reviews", wine_ratings_path(@rating.wine) %>
 <h1> <%= wine_name(@rating.wine) %> </h1>
 <h2>Review by: <%= @rating.user.name %></h2>
 <h2> <%= show_stars(@rating.stars) %> </h2>

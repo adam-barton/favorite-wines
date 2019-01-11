@@ -24,7 +24,6 @@
         margin: auto;
         text-align: center;
         width: 65%;
-        border: 3px solid black;
         padding: 4%;
         }
 
@@ -84,35 +83,29 @@
 
   </head>
   <body>
-    <div class="nav">
-          <ul class="nav">
-            <li><a href="<%= current_user_path %>">Home</a></li>
-            <% if current_user %>
-              <li><%= link_to "Wines", wines_path %></li>
-              <div class="nav">
-              <%= form_tag({controller: 'sessions', action: 'destroy', method: 'post'}, {:class=>"nav navbar-brand"}) do %>
-                  <input type=submit value='Log Out'>
-                  <% end %>
-                  </div>
-              <li></li>
-            <% else %>
-              <li><%= link_to "Sign Up", new_user_path %></li>
-              <li><%= link_to "Sign In", signin_path %></li>
-            <% end %>
-          </ul>
-     </div>   
+    
+    <ul class="nav nav-tabs">
+      <li class="nav-item"><a class="nav-link active" href="<%= current_user_path %>">Home</a></li>
+        <% if current_user %>
+          <li class="nav-item"><%= link_to "Wines", wines_path, class: "nav-link" %></li>
+          <%= form_tag({controller: 'sessions', action: 'destroy', method: 'post'}, {:class=>"nav-link"}) do %>
+            <input type=submit value='Log Out'>
+          <% end %>
+        <% else %>
+          <li class="nav-item"><%= link_to "Sign Up", new_user_path %></li>
+          <li class="nav-item"><%= link_to "Sign In", signin_path %></li>
+        <% end %>
+    </ul>  
 
     <!-- content -->
-    <div class="container"  role="main">
       <div class="yielded clearfix">
-      <p id="notice"><%= notice %></p>
-        <% if flash[:message] %>
-          <div class="notice alert-warning">
-            <p><%= flash[:message] %></p>
-          </div>
+        <p id="notice"><%= notice %></p>
+          <% if flash[:message] %>
+            <div class="notice alert-warning">
+              <p><%= flash[:message] %></p>
+            </div>
           <% end %>
         <%= yield %>
       </div>
-    </div>
   </body>
 </html>
