@@ -9,7 +9,7 @@ class RatingsController < ApplicationController
   end
 
   def show
-      @rating = Rating.find(params[:id])
+      @rating = Rating.find_by(id: params[:id])
   end
 
   def new

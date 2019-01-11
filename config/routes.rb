@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :ratings
   end
 
+  resources :ratings
+
   resources :users, only: [:new, :create, :show]
 
 
