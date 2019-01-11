@@ -45,4 +45,9 @@ class Wine < ActiveRecord::Base
     end
   end
 
+  def already_rated?
+    current_user.ratings.include?(self)
+  end
+  
+
 end
