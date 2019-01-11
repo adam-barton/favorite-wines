@@ -1,18 +1,19 @@
 <br>
   <div class="form-horizontal">
   <%= form_for [@rating] do |f| %>
-      <%= f.hidden_field :user_id %>
+      
 
-  <% if @rating.wine.nil? %>
-    <div class="form-group">
-      <%= f.label "Wine", class: "col-md-4 control-label" %>
-      <div class="col-md-4">
-        <%= f.select :wine_id, options_from_collection_for_select(Wine.all, :id, :name), include_blank: true, class: "form-control" %>
-      </div>
-    </div> 
+    <% if @rating.wine.nil? %>
+      <div class="form-group">
+        <%= f.label "Wine", class: "col-md-4 control-label" %>
+        <div class="col-md-4">
+          <%= f.select :wine_id, options_from_collection_for_select(Wine.all, :id, :name), include_blank: true, class: "form-control" %>
+        </div>
+      </div> 
     <% else %>
-      <% f.hidden_field :wine_id %>
+      <%= f.hidden_field :wine_id %>
     <% end %>
+    <%= f.hidden_field :user_id %>
 
     <div class="form-group">  
       <%= f.label :stars, class: "col-md-4 control-label" %>

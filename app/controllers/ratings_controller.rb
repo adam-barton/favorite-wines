@@ -26,7 +26,6 @@ class RatingsController < ApplicationController
       redirect_to wine_rating_path(@rating.wine_id, @rating)
     else
       @rating = Rating.new(rating_params)
-
         if @rating.save
         redirect_to wine_rating_path(@rating.wine, @rating)
         else
