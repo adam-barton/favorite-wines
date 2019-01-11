@@ -1,17 +1,19 @@
 <%= link_to "Back to wines", wines_path %>
 <h1><%= wine_name(@wine) %></h1>
 <br>
-<div> 
-  <p><b>Label:</b> <%= @wine.label %></p>
-  <p><b>Type:</b> <%= @wine.category %></p>
-  <p><b>Grape:</b> <%= @wine.grape %></p>
-  <p><b>Year:</b> <%= @wine.year %></p>
+<div class="list-group"> 
+  <p class="list-group-item"><b>Label:</b> <%= @wine.label %></p>
+  <p class="list-group-item"><b>Type:</b> <%= @wine.category %></p>
+  <p class="list-group-item"><b>Grape:</b> <%= @wine.grape %></p>
+  <p class="list-group-item"><b>Year:</b> <%= @wine.year %></p>
   <% if @wine.region %>
-  <p><b>Region:</b> <%= @wine.region %></p>
+  <p class="list-group-item"><b>Region:</b> <%= @wine.region %></p>
   <% end %>
-  <p><b>Average Rating:</b> <%= show_stars(@wine.average_rating) %>  </p><br>
+  <p class="list-group-item"><b>Average Rating:</b> <%= show_stars(@wine.average_rating) %>  </p><br>
 </div>
-<h3><%= link_to "Read reviews", wine_ratings_path(@wine) %></h3>
+<% if !@wine.ratings.empty? %>
+  <h3><%= link_to "Read reviews", wine_ratings_path(@wine) %></h3>
+  <% end %>
 <br>
   <% if !@wine.users.include?(current_user) %>
     <p><%= link_to "Add a review", new_wine_rating_path(@wine), class: "form-group btn btn-primary" %></p>

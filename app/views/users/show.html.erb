@@ -1,9 +1,9 @@
 
 <h1><%= @current_user.name %></h1>
 
-<div class="list"> 
+<div class="list-group"> 
   <h3>Your reviews:</h3>
     <% @current_user.users_ratings.each do |r| %>
-      <h4><%= link_to wine_name(r.wine), wine_rating_path(r.wine, r.id) %> - <%= show_stars(r.stars) %></h4>
+      <h4 class="list-group-item"><%= link_to wine_name(r.wine), wine_rating_path(r.wine, r.id) %> - <%= show_stars(r.stars) %></h4>
     <% end %>
 </div>

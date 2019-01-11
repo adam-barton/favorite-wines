@@ -1,14 +1,37 @@
 <h1>Sign Up</h1>
-<%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
-  <%= f.label :email %>
-  <%= f.text_field :email %><br>
-  <%= f.label :password %>
-  <%= f.password_field :password %><br><br>
-  <%= f.submit "Create Account" %>
-<% end %>
-<p>or</p>
-<div>
-  <%= link_to image_tag("https://lh3.googleusercontent.com/JOb-1edXXl9_rrXDIOmDwMj_aTPyzysn6-vSAq_VV1AYV_M_2gec7TDRBd_R-qchK8j8=s170"), '/auth/github', class: "github_button" %>
+<div class="form-horizontal">
+  <%= form_for @user do |f| %>
+
+    <div class="form-group"> 
+      <%= f.label :name, class: "col-md-4 control-label" %>
+      <div class="col-md-4">
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+
+      <div class="form-group">
+        <%= f.label :email, class: "col-md-4 control-label" %>
+        <div class="col-md-4">
+          <%= f.text_field :email, class: "form-control" %>
+        </div>
+      </div>
+
+    <div class="form-group">
+      <%= f.label :password, class: "col-md-4 control-label" %>
+      <div class="col-md-4">
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
+    </div>
+
+    <div> 
+      <%= f.submit "Create Account" %>
+      </div>
+
+  <% end %>
 </div>
+<br>
+
+<p>or</p>
+  <div>
+    <%= link_to image_tag("https://lh3.googleusercontent.com/JOb-1edXXl9_rrXDIOmDwMj_aTPyzysn6-vSAq_VV1AYV_M_2gec7TDRBd_R-qchK8j8=s170"), '/auth/github', class: "github_button" %>
+  </div>

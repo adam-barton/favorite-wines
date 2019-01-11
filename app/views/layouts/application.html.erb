@@ -27,57 +27,19 @@
         padding: 4%;
         }
 
-        .clearfix:after {
-        content: ".";
-        display: block;
-        clear: both;
-        visibility: hidden;
-        height: 0;
-        line-height: 0;
-        }
-        table {
-            margin: auto;
-            text-align: left;
+        .list-group {
+          width: 60%;
+          text-align: left;
+          margin: auto;
+          border: 0;
         }
 
-      .group:after {
-        content: "";
-        display: table;
-        clear: both;
-      }
-
-      .home-pic {
-        width: 100%;
-        object-fit: scale-down;
-      }
-      .nav {
-        
-      }
-
-      .detail-list {
-        margin: 0 auto;
-        text-align: left;
-        
-      }
-
-      .new-wine-link {
-        color: purple;
-      }
-
-      .list {
-        text-align: center;
-        position: center;
-        padding: 10%;
-      }
 
       @media only screen and (max-width: 900px) {
         .nav {
           display: inline;
         }
       }
-
-
-
 
       </style>
 
@@ -98,7 +60,7 @@
     </ul>  
 
     <!-- content -->
-      <div class="yielded clearfix">
+      <div class="yielded">
         <p id="notice"><%= notice %></p>
           <% if flash[:message] %>
             <div class="notice alert-warning">
