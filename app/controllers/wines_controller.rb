@@ -15,6 +15,7 @@ class WinesController < ApplicationController
   def create
      @wine = Wine.find_or_create_by(wine_params)
     if @wine.valid?
+      @wine.name = @wine.full_name
       @wine.save
       redirect_to @wine
     else
