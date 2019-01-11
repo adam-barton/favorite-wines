@@ -7,7 +7,7 @@
     <div class="form-group">
       <%= f.label "Wine", class: "col-md-4 control-label" %>
       <div class="col-md-4">
-        <%= f.select :wine_id, options_from_collection_for_select(Wine.all, :id, :name), class: "form-control" %>
+        <%= f.select :wine_id, options_from_collection_for_select(Wine.all, :id, :name), include_blank: true, class: "form-control" %>
       </div>
     </div> 
     <% else %>
@@ -38,7 +38,7 @@
 
 
     <div>
-      <%= f.submit "Update Rating"%>
+      <%= f.submit %>
     </div>
 <% end %>
 </div>

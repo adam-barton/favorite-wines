@@ -50,6 +50,7 @@
       <li class="nav-item"><a class="nav-link active" href="<%= current_user_path %>">Home</a></li>
         <% if current_user %>
           <li class="nav-item"><%= link_to "Wines", wines_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Ratings", ratings_path, class: "nav-link" %></li>
           <%= form_tag({controller: 'sessions', action: 'destroy', method: 'post'}, {:class=>"nav-link"}) do %>
             <input type=submit value='Log Out'>
           <% end %>

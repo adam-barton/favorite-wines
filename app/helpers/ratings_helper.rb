@@ -16,5 +16,6 @@ module RatingsHelper
     "No ratings yet. Be the first?  🌠"
     end
   end
-
+  
+  
 end

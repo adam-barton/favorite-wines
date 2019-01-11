@@ -5,7 +5,7 @@ class Rating < ActiveRecord::Base
 
 
   validates :stars, presence: true
-
+  validates :wine_id, presence: true
 
 
 

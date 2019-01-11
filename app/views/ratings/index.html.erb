@@ -1,8 +1,13 @@
-<%= link_to "Back to wine details", wine_path(@wine) %>
-<h1><%= wine_name(@wine) %></h1>
+<% if params[:wine_id] %>
+  <h1><%= @ratings.wine.name %></h1>
+  <% else %>
+  <h1>Ratings</h1>
+  <% end %>
 <ul class="list-group">
-  <% @wine.ratings.each do |rating| %>
-    <li class="list-group-item"><%=  rating.user.name %> - <%= show_stars(rating.stars) %>
-     - <%= link_to "Read the review", wine_rating_path(@wine, rating) %></li>
+  <% @ratings.each do |rating| %>
+    <li class="list-group-item">User: <%=  rating.user.name %>, Rating: <%= show_stars(rating.stars) %>
+     <br> <%= link_to "Read the review", wine_rating_path(rating.wine, rating) %></li>
     <% end %>
     </ul>
+    <br>
+    <p> <%= link_to "Add a new rating", new_rating_path, class: "btn btn-primary" %> </p>
