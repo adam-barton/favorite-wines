@@ -27,4 +27,5 @@ module RatingsHelper
   end
 
 
+
 end

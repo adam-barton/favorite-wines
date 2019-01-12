@@ -12,20 +12,17 @@ class Wine < ActiveRecord::Base
     message: "should be a four-digit year"
   }
 
-  scope :regions, -> (region) { where region: region }
-   scope :year, -> (year) { where year: year }
-
 
   def full_name
     "#{self.year}" + " " + "#{self.label}" + " " + "#{self.grape}"
   end
 
-  def average_rating
-    Rating.where(wine_id: self.id).average(:stars).to_i
-  end
-
   def self.reverse_sort
     order(id: :desc)
+  end
+
+  def average_rating
+    Rating.where(wine_id: self.id).average(:stars).to_i
   end
 
 

@@ -1,15 +1,17 @@
 class RatingsController < ApplicationController
 
+  before_action :find_rating, only: [:show, :edit, :update]
+
   def index
     if params[:wine_id]
-      @ratings = Wine.find(params[:wine_id])
+      @ratings = Wine.find(params[:wine_id]).ratings
     else
       @ratings = Rating.all
     end
   end
 
   def show
-      @rating = Rating.find_by(id: params[:id])
+      # @rating = Rating.find_by(id: params[:id])
   end
 
   def new
@@ -36,14 +38,14 @@ class RatingsController < ApplicationController
 
   def edit
     @wine = Wine.find_by(id: params[:wine_id])
-    @rating = Rating.find_by(id: params[:id])
+    # @rating = Rating.find_by(id: params[:id])
     if @rating.user_id != current_user.id
       redirect_to wines_path
     end
   end
 
   def update
-    @rating = Rating.find_by(id: params[:id])
+    # @rating = Rating.find_by(id: params[:id])
     @rating.update(rating_params)
 
     redirect_to wine_rating_path(@rating.wine, @rating)
@@ -53,6 +55,10 @@ private
 
   def rating_params
     params.require(:rating).permit(:stars, :taste, :comments, :wine_id, :user_id)
+  end
+
+  def find_rating
+    @rating = Rating.find_by(id: params[:id])
   end
 
 

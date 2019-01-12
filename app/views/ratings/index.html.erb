@@ -1,11 +1,14 @@
 <% if params[:wine_id] %>
-  <h1><%= @ratings.wine.name %></h1>
+  <h1><%= @ratings.first.wine.name %></h1>
   <% else %>
   <h1>Ratings</h1>
   <% end %>
+
 <ul class="list-group">
   <% @ratings.each do |rating| %>
-    <li class="list-group-item">User: <%=  rating.user.name %>, Rating: <%= show_stars(rating.stars) %>
+    <li class="list-group-item"> <% if !params[:wine_id] %><%= rating.list_with_names %> <% end %><br>
+      Rating: <%= show_stars(rating.stars) %> <br>
+       User: <%=  rating.user.name %>
      <br> <%= link_to "Read the review", wine_rating_path(rating.wine, rating) %></li>
     <% end %>
     </ul>
