@@ -1,3 +1,13 @@
+<% if @rating.errors.any? %>
+  <div id="error_explanation">
+    <p>There were some errors:</p>
+    <ul>
+      <% @rating.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <br>
   <div class="form-horizontal">
   <%= form_for [@rating] do |f| %>
@@ -16,7 +26,7 @@
     </div>
     
     <div class="form-group">
-      <%= f.label "Tastinng Notes", class: "col-md-4 control-label" %>
+      <%= f.label "Tasting Notes", class: "col-md-4 control-label" %>
       <div class="col-md-4"> 
         <%= f.text_area :taste, class: "form-control" %>
       </div>

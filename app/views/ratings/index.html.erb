@@ -13,4 +13,9 @@
     <% end %>
     </ul>
     <br>
-    <p> <%= link_to "Add a new rating", new_rating_path, class: "btn btn-primary" %> </p>
+
+    <% if params[:wine_id] && current_user.users_ratings.include?(params[:wine_id]) %>
+        <p><%= link_to "edit my rating", edit_rating_path(), class: "btn btn-primary" %></p>
+      <% else %>
+        <p> <%= link_to "Add a new rating", new_rating_path, class: "btn btn-primary" %> </p>
+      <% end %>

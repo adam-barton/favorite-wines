@@ -1,4 +1,14 @@
 <h1>Sign Up</h1>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <p>There were some errors:</p>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 <div class="form-horizontal">
   <%= form_for @user do |f| %>
 
