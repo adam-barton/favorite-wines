@@ -14,6 +14,7 @@ class WinesController < ApplicationController
 
   def create
      @wine = Wine.find_or_create_by(wine_params)
+     @wine.creator_id = current_user.id
     if @wine.valid?
       @wine.name = @wine.full_name
       @wine.save
@@ -43,7 +44,7 @@ class WinesController < ApplicationController
 
 
   def wine_params
-      params.require(:wine).permit(:label, :category, :grape, :year, :region)
+      params.require(:wine).permit(:label, :category, :grape, :year, :region, :creator_id)
   end
 
 end
