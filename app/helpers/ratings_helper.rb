@@ -19,7 +19,7 @@ module RatingsHelper
   
   def wine_id_field(rating)
      if rating.wine.nil?
-       select_tag "ratings[:wine_id]", options_from_collection_for_select(Wine.all, :id, :name), :prompt => "Select a wine"
+       select_tag "rating[wine_id]", options_from_collection_for_select(Wine.all, :id, :name), :prompt => "Select a wine"
     else
       hidden_field_tag "rating[wine_id]", rating.wine.id
     end
