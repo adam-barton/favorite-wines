@@ -11,13 +11,16 @@ class RatingsController < ApplicationController
   end
 
   def show
-      # @rating = Rating.find_by(id: params[:id])
   end
 
   def new
     if params[:wine_id] && !Wine.exists?(params[:wine_id])
       redirect_to wines_path, flash[:message] = "Wine not found."
-   else
+    elsif
+      @rating = Rating.find_by(user_id: current_user.id, wine_id: params[:wine_id]) 
+      flash[:message] = "You've already reviewed this wine."
+      redirect_to wine_rating_path(@rating.wine_id, @rating)
+    else
       @rating = Rating.new(:wine_id => params[:wine_id], :user_id => current_user.id)
     end
   end
@@ -38,14 +41,13 @@ class RatingsController < ApplicationController
 
   def edit
     @wine = Wine.find_by(id: params[:wine_id])
-    # @rating = Rating.find_by(id: params[:id])
+    
     if @rating.user_id != current_user.id
       redirect_to wines_path
     end
   end
 
   def update
-    # @rating = Rating.find_by(id: params[:id])
     @rating.update(rating_params)
 
     redirect_to wine_rating_path(@rating.wine, @rating)
