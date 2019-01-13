@@ -24,6 +24,10 @@ module RatingsHelper
       hidden_field_tag "rating[wine_id]", rating.wine.id
     end
   end
+  
+  def list_with_names
+    "Wine: #{self.wine.name} "
+  end
 
 
 
