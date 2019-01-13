@@ -1,12 +1,11 @@
 <h1>Sign Up</h1>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
+    <div class="notice alert-warning">
       <p>There were some errors:</p>
-      <ul>
+      <br>
         <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <p><%= message %></p>
         <% end %>
-      </ul>
     </div>
   <% end %>
 <div class="form-horizontal">

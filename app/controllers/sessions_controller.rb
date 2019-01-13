@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
             redirect_to @user
         else
             flash[:message] = "Your email or password were incorrect."
-            render :new
+            redirect_to signin_path
         end
     end
   end

@@ -1,12 +1,11 @@
 <% if @wine.errors.any? %>
-  <div id="error_explanation">
-    <p>There were some errors:</p>
-    <ul>
-      <% @wine.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
+  <div class="notice alert-warning">
+      <p>There were some errors:</p>
+      <br>
+        <% @wine.errors.full_messages.each do |message| %>
+          <p><%= message %></p>
+        <% end %>
+    </div>
 <% end %>
 
 <div class="form-horizontal">
