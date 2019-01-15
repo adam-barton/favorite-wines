@@ -8,5 +8,8 @@ module ApplicationHelper
     end
   end
 
+  def login_with_github
+   link_to image_tag('home/github_signin.png'), '/auth/github', class: "btn-github"
+  end
 
 end

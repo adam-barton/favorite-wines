@@ -8,7 +8,7 @@
         <% end %>
     </div>
   <% end %>
-  
+
 <div class="form-horizontal">
   <%= form_for @user do |f| %>
 
@@ -42,6 +42,7 @@
 <br>
 
 <p>or</p>
+
   <div>
-    <%= link_to image_tag("https://lh3.googleusercontent.com/JOb-1edXXl9_rrXDIOmDwMj_aTPyzysn6-vSAq_VV1AYV_M_2gec7TDRBd_R-qchK8j8=s170"), '/auth/github', class: "github_button" %>
+  <%= login_with_github %>
   </div>
