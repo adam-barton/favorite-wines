@@ -6,7 +6,7 @@
 
 <ul class="list-group">
   <% @ratings.each do |rating| %>
-    <li class="list-group-item"> <% if !params[:wine_id] %><%= rating.list_with_names %> <% end %><br>
+    <li class="list-group-item"> <% if !params[:wine_id] %><%= list_with_names rating %> <% end %><br>
       Rating: <%= show_stars(rating.stars) %> <br>
        User: <%=  rating.user.name %>
      <br> <%= link_to "Read the review", wine_rating_path(rating.wine, rating) %></li>

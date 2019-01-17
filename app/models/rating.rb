@@ -8,8 +8,4 @@ class Rating < ActiveRecord::Base
   validates :wine_id, presence: true
 
 
-  def list_with_names
-    "Wine: #{self.wine.name} "
-  end
-
 end

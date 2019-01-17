@@ -25,8 +25,8 @@ module RatingsHelper
     end
   end
   
-  def list_with_names
-    "Wine: #{self.wine.name} "
+  def list_with_names(rating)
+    "Wine: #{rating.wine.name} "
   end
 
 
