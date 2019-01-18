@@ -20,4 +20,6 @@ Rails.application.routes.draw do
 
     post '/filter' => "wines#filter"
 
+    get '/category_filter' => 'wines#category_filter'
+
 end

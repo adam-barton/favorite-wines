@@ -1,16 +1,23 @@
 <h1>Wines!</h1>
 <ul class="list-group">
   <% @wines.each do |wine| %>
-  <li class="list-group-item"><%= link_to wine_name(wine), wine_path(wine) %> </li>
+  <li class="list-group-item"> <%= wine.average_rating %><%= link_to wine_name(wine), wine_path(wine) %> </li>
   <% end %>
 </ul>
 
-<div class="sort-form">
-  <%= form_tag '/filter' do %>
-      <label>Sort by:</label>
-      <%= select_tag "filter", "<option>Popularity</option>".html_safe, include_blank: true %>
-      <%= submit_tag "Submit" %>
-    <% end %>
-</div>
+  <div class="sort-form">
+    <%= form_tag '/filter' do %>
+        <label>Sort by:</label>
+        <%= select_tag "filter", "<option>Popularity</option>".html_safe, include_blank: true %>
+        <%= submit_tag "Submit" %>
+      <% end %>
+  </div>
 <br>
 <p> <%= link_to "Add a new wine", new_wine_path, class: "btn btn-primary" %> </p>
+
+<%= form_tag '/category_filter', method: :get do %>
+      <label>filter by category:</label>
+      <%= select_tag "category", options_from_collection_for_select(Wine.all.uniq{| wine | wine.category}, "category", "category") %>
+      <%= submit_tag "Submit" %>
+    <% end %>
+

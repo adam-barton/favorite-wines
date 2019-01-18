@@ -35,16 +35,24 @@ class WinesController < ApplicationController
   end
 
   def filter
-    @wines = Wine.popularity
+    @wines = Wine.reverse_sort.popularity
 
     render :index
+    end
+
+    def category_filter
+
+      @wines = Wine.where(category: params[:category])
+
+      render :index
+
     end
 
   private
 
 
   def wine_params
-      params.require(:wine).permit(:label, :category, :grape, :year, :region, :creator_id)
+      params.require(:wine).permit(:label, :category, :grape, :year, :region)
   end
 
 end

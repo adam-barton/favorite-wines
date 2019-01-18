@@ -37,9 +37,12 @@ class Wine < ActiveRecord::Base
   end
 
   def self.popularity
-    Wine.all.each do |wine|
-      wine.popular?
-    end
+
+    Wine.all.sort_by do |wine|
+      wine.average_rating
+    end.reverse
   end
+
+  
 
 end
