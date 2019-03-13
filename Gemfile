@@ -30,7 +30,8 @@ gem 'jbuilder', '~> 2.5'
  gem 'omniauth'
  gem 'omniauth-github'
  gem 'dotenv-rails'
-
+#Active Model Serializers
+ gem 'active_model_serializers'
 
 # Use bootstrap
  gem 'jquery-rails'
