@@ -13,11 +13,12 @@
       <% end %>
   </div>
 <br>
-<p> <%= link_to "Add a new wine", new_wine_path, class: "btn btn-primary" %> </p>
 
 <%= form_tag '/category_filter', method: :get do %>
       <label>filter by category:</label>
       <%= select_tag "category", options_from_collection_for_select(Wine.all.uniq{| wine | wine.category}, "category", "category") %>
       <%= submit_tag "Submit" %>
     <% end %>
+<br>
+<p> <%= link_to "Add a new wine", new_wine_path, class: "btn btn-primary" %> </p>
 

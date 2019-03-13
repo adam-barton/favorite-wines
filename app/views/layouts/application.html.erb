@@ -52,7 +52,7 @@
   <body>
     
     <ul class="nav nav-tabs">
-      <li class="nav-item"><a class="nav-link active" href="<%= current_user_path %>">Home</a></li>
+      <li class="nav-item"><a class="nav-link active" href="<%= current_user_path %>">My reviews</a></li>
         <% if current_user %>
           <li class="nav-item"><%= link_to "Wines", wines_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to "Ratings", ratings_path, class: "nav-link" %></li>
