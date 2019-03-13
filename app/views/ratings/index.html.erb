@@ -9,8 +9,8 @@
     <li class="list-group-item"> <% if !params[:wine_id] %><%= list_with_names rating %> <% end %><br>
       Rating: <%= show_stars(rating.stars) %> <br>
        User: <%=  rating.user.name %>
-     <br> <%= link_to "Read the review", wine_rating_path(rating.wine, rating) %></li>
-     <%= render partial: "show", locals: @rating %>
+       <%= render partial: "show", locals: @rating %>
+     <br><button id="previous"> <%= link_to "Read the review", wine_rating_path(rating.wine, rating) %></button></li>
     <% end %>
     </ul>
     <br>
