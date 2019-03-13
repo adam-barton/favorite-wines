@@ -37,7 +37,7 @@ gem 'jbuilder', '~> 2.5'
 
  gem 'autoprefixer-rails'
 
- gem 'bootstrap', '~> 4.2.1'
+ gem 'bootstrap', '~> 4.3.1'
 
  gem 'sprockets-rails', '>= 2.3.2'
 
