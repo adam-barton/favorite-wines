@@ -10,7 +10,7 @@
       Rating: <%= show_stars(rating.stars) %> <br>
        User: <%=  rating.user.name %>
        <%= render partial: "show", locals: @rating %>
-     <br><button id="previous"> <%= link_to "Read the review", wine_rating_path(rating.wine, rating) %></button></li>
+     <br><button class="previous"> <%= link_to "Read the review", wine_rating_path(rating.wine, rating) %></button></li>
     <% end %>
     </ul>
     <br>
