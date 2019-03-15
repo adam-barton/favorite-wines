@@ -1,0 +1,6 @@
+<h1>new rating</h1>
+<% if @rating.wine %>
+    <p>for</p>
+    <h2><%= @rating.wine.name %> </h2>
+<% end %>
+<%= render partial: 'form' %>

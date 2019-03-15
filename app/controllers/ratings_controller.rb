@@ -8,6 +8,10 @@ class RatingsController < ApplicationController
     else
       @ratings = Rating.all
     end
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @ratings}
+    end
   end
 
   def show
