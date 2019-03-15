@@ -10,10 +10,11 @@ function getWines() {
         dataType: 'json'
     }).done(function(data) {
         console.log(data)
-        let thisWine = new Wine(data[0]);
-        debugger
-        let addHTML = thisWine.postHTML();
-        document.getElementById('newWineList').innerHTML = addHTML;
+        for (const wine of data) {
+            let thisWine = new Wine(wine);
+            let addHTML = thisWine.postHTML();
+            document.getElementById('newWineList').innerHTML += addHTML;
+        }
     });
 }
 
@@ -43,6 +44,7 @@ class Wine {
         this.id = obj.id
         this.name = obj.name
         this.label = obj.label
+        this.year = obj.year
         this.category = obj.category
         this.grape = obj.grape
         this.region = obj.region
@@ -52,9 +54,18 @@ class Wine {
 }
 
 // Rating.prototype.postHTML = function() {
-//     return { `
+//     return ( `
 //         <p>${this.stars}</p>
 //         <p>${this.comments}</p>
 //         <p>${this.taste}</p>
-//     ` }
+//     ` )
 // }
+
+Wine.prototype.postHTML = function() {
+    return (`
+        <h2>${this.name}</h2>
+        <p>${this.region}</p>
+        <p>${this.year}</p>
+        <p>${this.category}</p>
+    `)
+}
