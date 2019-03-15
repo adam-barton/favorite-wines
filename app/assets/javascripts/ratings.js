@@ -11,7 +11,7 @@ function getWines() {
         console.log(data)
         for (const wine of data) {
             let thisWine = new Wine(wine);
-            let addHTML = thisWine.postHTML();
+            let addHTML = thisWine.wineName();
             document.getElementById('newWineList').innerHTML += addHTML;
         }
     });
@@ -61,12 +61,10 @@ class Wine {
 //     ` )
 // }
 
-Wine.prototype.postHTML = function() {
+Wine.prototype.wineName = function() {
     return (`
-        <h2><a href="/wines/${this.id}">${this.name}</a></h2>
-        <p>${this.region}</p>
-        <p>${this.year}</p>
-        <p>${this.category}</p>
+        <h2><a href="/wines/${this.id}" class="wineIndexList" data-id="${this.id}" onClick="wineDetail()">${this.name}</a></h2>
+            <div></div>
         <hr>
     `)
 }
@@ -76,4 +74,14 @@ function newWine() {
     console.log("Hello!!")
 
     alert("you've pressed a button")
+}
+
+// <p>${this.region}</p>
+// <p>${this.year}</p>
+// <p>${this.category}</p>
+
+function wineDetail() {
+    event.preventDefault();
+    // alert(`Wine id ${$('.wineIndexList').attr('data-id')}`)
+    console.log($('.wineIndexList').attr('data-id'))
 }
