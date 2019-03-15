@@ -10,6 +10,7 @@ function getWines() {
         dataType: 'json'
     }).done(function(data) {
         console.log(data)
+        debugger
         for (const wine of data) {
             let thisWine = new Wine(wine);
             let addHTML = thisWine.postHTML();
@@ -63,9 +64,10 @@ class Wine {
 
 Wine.prototype.postHTML = function() {
     return (`
-        <h2>${this.name}</h2>
+        <h2><a href="/wines/${this.id}">${this.name}</a></h2>
         <p>${this.region}</p>
         <p>${this.year}</p>
         <p>${this.category}</p>
+        <hr>
     `)
 }
