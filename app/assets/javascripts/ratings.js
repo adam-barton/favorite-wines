@@ -1,6 +1,5 @@
 $(document).ready(function() {
     attachEventListeners();
-    // getWines()
 });
 
 function getWines() {
@@ -19,7 +18,8 @@ function getWines() {
 }
 
 function attachEventListeners() {
-    $('.previous').on('click', () => previousGames());
+    // $('.previous').on('click', () => previousGames());
+    $('#newWineSubmit').on('click', () => newWine());
 }
 
 function previousGames() {
@@ -69,4 +69,11 @@ Wine.prototype.postHTML = function() {
         <p>${this.category}</p>
         <hr>
     `)
+}
+
+function newWine() {
+    event.preventDefault()
+    console.log("Hello!!")
+
+    alert("you've pressed a button")
 }
