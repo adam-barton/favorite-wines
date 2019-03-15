@@ -1,6 +1,7 @@
 class WinesController < ApplicationController
 
   def index
+    @new_wine = Wine.new
     @wines = Wine.reverse_sort
     respond_to do |format|
       format.html { render :index }

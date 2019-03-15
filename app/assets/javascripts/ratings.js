@@ -1,6 +1,6 @@
 $(document).ready(function() {
     attachEventListeners();
-    getWines()
+    // getWines()
 });
 
 function getWines() {
@@ -10,7 +10,6 @@ function getWines() {
         dataType: 'json'
     }).done(function(data) {
         console.log(data)
-        debugger
         for (const wine of data) {
             let thisWine = new Wine(wine);
             let addHTML = thisWine.postHTML();
