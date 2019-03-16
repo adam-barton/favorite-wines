@@ -32,19 +32,10 @@ function getWineRatings(wine) {
         dataType: 'json'
     }).done(function(response) {
         for (const rating of response) {
-            console.log(rating["stars"], rating["comments"]);
             let thisRating = new Rating(rating);
             let addRating = thisRating.ratingDetails();
-            $(`#wine-${thisRating.id}-ratings`) += (addRating);
-        }
-        // $.each(response, function(index, rating) {
-        //     console.log(index, rating)
-        //     let thisRating = new Rating(rating);
-        //     console.log(rating["comments"])
-        //     let addRating = thisRating.ratingDetails();
-        //     console.log(thisRating.ratingDetails())
-        //     $(`#wine-${thisRating.id}-ratings`).append(addRating);
-        // });
+            $(`#wine-ratings-${thisRating.wine_id}`).append(addRating);
+        };
     });
 }
 
@@ -63,8 +54,8 @@ function previousGames() {
 class Rating {
     constructor(obj) {
         this.id = obj.id
-        this.user_id = obj.user_id
-        this.wine_id = obj.wine_id
+        this.user_id = obj.user.id
+        this.wine_id = obj.wine.id
         this.stars = obj.stars
         this.comments = obj.comments
         this.taste = obj.taste
@@ -87,10 +78,13 @@ class Wine {
 
 Rating.prototype.ratingDetails = function() {
     return (`
+        <div id="individual-rating">
         <p>Stars: ${this.stars}</p>
-        <p>Comments: ${this.comments}</p>
+        <p><strong>Comments: ${this.comments}</strong></p>
         <p>Tasting notes: ${this.taste}</p>
+        </div>
     `)
+
 }
 
 Wine.prototype.wineName = function() {
@@ -110,7 +104,7 @@ Wine.prototype.wineDetails = function() {
         <p>Category: ${this.category}</p>
         <p>Ratings: ${this.ratings.length}</p>
         <a href=#" id="ratings-${this.id}">See ratings</a>
-        <div id="wine-${this.id}-ratings"></div>
+        <div id="wine-ratings-${this.id}"></div>
     `)
 }
 
