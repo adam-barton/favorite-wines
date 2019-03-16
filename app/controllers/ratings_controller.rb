@@ -38,12 +38,13 @@ class RatingsController < ApplicationController
       flash[:message] = "You've already reviewed this wine."
       redirect_to wine_rating_path(@rating.wine_id, @rating)
     else
-      @rating = Rating.new(rating_params)
-        if @rating.save
-        redirect_to wine_rating_path(@rating.wine, @rating)
-        else
-          render :new
-        end
+      @rating = Rating.create(rating_params)
+        # if @rating.save
+          # redirect_to wine_rating_path(@rating.wine, @rating)
+          render json: @rating, status: 201
+        # else
+        #   render :new
+        # end
     end
   end
 

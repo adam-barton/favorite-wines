@@ -13,7 +13,27 @@
 </div>
 <div id="new-rating-for-<%=@wine.id%>">
 <h3>Ratings: <h3>
+  <p id="new-stars"></p>
+  <p id="new-comments"></p>
+  <p id="new-tasting"></p>
 <div>
 <br>
 <h2>Add a rating</h2>
 <%= render partial: 'ratings/form' %>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('form').submit(function(event) {
+      event.preventDefault();
+      let values = $(this).serialize();
+      let postRating = $.post(`/ratings`, values)
+
+      postRating.done(function(response) {
+        $("#new-stars").text("Stars: " + response["stars"])
+        $("#new-comments").text(response["comments"])
+        $("#new-tasting").text(response["taste"])
+      });
+    });
+  });
+</script>
+

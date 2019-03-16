@@ -26,7 +26,7 @@ function getWineDetail(wine) {
     $(`#wineDetail-${wine.id}`).empty;
     $(`#wineDetail-${wine.id}`).html(wine.wineDetails())
     $(`#ratings-${wine.id}`).on('click', () => getWineRatings(wine));
-    $(`#add-rating-${wine.id}`).on('click', () => addRating(wine));
+    // $(`#add-rating-${wine.id}`).on('click', () => addRating(wine));
 } // -- end --
 
 
@@ -47,28 +47,11 @@ function getWineRatings(wine) {
 } // -- end --
 
 
-// NEW RATING FORM
-function newRating() {
-    event.preventDefault();
-    alert(`Hello`)
-    console.log($(this).serialize());
-    debugger
-    // let ratingForm = $(`/wines/${wine.id}/ratings/new`)
-
-    // $(`#wine-ratings-${wine.id}`).append(newRatingForm());
-} // -- end --
-
-
-// // FORM CREATOR
-// function newRatingForm() {
-//     return `<%= render partial: 'form ' %>`
-// } // -- end --
-
 
 // ADDS EVENT LISTENERS AT Document.ready
 function attachEventListeners() {
     // $('.previous').on('click', () => previousGames());
-    $('#newRatingSubmit').on('submit', () => newRating());
+    // $('#newRatingSubmit').on('click', () => newRating());
 } // -- end --
 
 
