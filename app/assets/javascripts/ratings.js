@@ -8,14 +8,21 @@ function getWines() {
         method: 'get',
         dataType: 'json'
     }).done(function(data) {
-        console.log(data)
         for (const wine of data) {
             let thisWine = new Wine(wine);
-            let addHTML = thisWine.wineName();
-            document.getElementById('newWineList').innerHTML += addHTML;
+            let addName = thisWine.wineName();
+            $('#newWineList').append(addName);
+            $(`#wine-ID-${thisWine.id}`).on('click', () => getWineDetail(thisWine))
         }
     });
 }
+
+function getWineDetail(wine) {
+    event.preventDefault();
+    $(`#wineDetail-${wine.id}`).empty;
+    $(`#wineDetail-${wine.id}`).html(wine.wineDetails())
+}
+
 
 function attachEventListeners() {
     // $('.previous').on('click', () => previousGames());
@@ -63,9 +70,20 @@ class Wine {
 
 Wine.prototype.wineName = function() {
     return (`
-        <h2><a href="/wines/${this.id}" class="wineIndexList" data-id="${this.id}" onClick="wineDetail()">${this.name}</a></h2>
-            <div></div>
+        <h2><a href="#" id="wine-ID-${this.id}">${this.name}</a></h2>    
+        <div id="wineDetail-${this.id}"></div>
         <hr>
+    `)
+}
+Wine.prototype.wineName1 = function() {
+    return this.name
+}
+
+Wine.prototype.wineDetails = function() {
+    return (`
+        <p>${this.region}</p>
+        <p>${this.category}</p>
+        <p>${this.ratings.length}</p>
     `)
 }
 
@@ -74,14 +92,4 @@ function newWine() {
     console.log("Hello!!")
 
     alert("you've pressed a button")
-}
-
-// <p>${this.region}</p>
-// <p>${this.year}</p>
-// <p>${this.category}</p>
-
-function wineDetail() {
-    event.preventDefault();
-    // alert(`Wine id ${$('.wineIndexList').attr('data-id')}`)
-    console.log($('.wineIndexList').attr('data-id'))
 }
