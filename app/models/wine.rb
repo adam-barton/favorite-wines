@@ -27,7 +27,7 @@ class Wine < ActiveRecord::Base
 
 
   def popularity_rating
-        self.average_rating + self.ratings.count
+      self.average_rating + self.ratings.count
   end
 
   def popular?
@@ -37,7 +37,6 @@ class Wine < ActiveRecord::Base
   end
 
   def self.popularity
-
     Wine.all.sort_by do |wine|
       wine.average_rating
     end.reverse

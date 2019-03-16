@@ -1,4 +1,4 @@
-<% if @new_wine.errors.any? %>
+<% if @wine.errors.any? %>
   <div class="notice alert-warning">
       <p>There were some errors:</p>
       <br>
@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="form-horizontal">
-  <%= form_for @new_wine do |w| %>
+  <%= form_for @wine do |w| %>
 
     <div class="form-group">  
       <%= w.label "Label: ", class: "col-md-4 control-label" %>
@@ -47,6 +47,6 @@
      </div> 
 
      <div> 
-      <%= w.submit id: "newWineSubmit"%>
+      <%= w.submit %>
     </div>
   <% end %>

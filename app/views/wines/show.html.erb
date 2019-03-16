@@ -11,13 +11,9 @@
   <% end %>
   <p class="list-group-item"><b>Average Rating:</b> <%= show_stars(@wine.average_rating) %>  </p><br>
 </div>
-<% if !@wine.ratings.empty? %>
-  <h3><%= link_to "Read reviews", wine_ratings_path(@wine) %></h3>
-  <% end %>
+<div id="new-rating-for-<%=@wine.id%>">
+<h3>Ratings: <h3>
+<div>
 <br>
-  <% if !@wine.users.include?(current_user) %>
-    <p><%= link_to "Add a review", new_wine_rating_path(@wine), class: "form-group btn btn-primary" %></p>
-  <% end %>
-<% if @wine.creator_id == current_user.id %>
-  <%= link_to "Edit this wine", edit_wine_path %>
-<% end %>
+<h2>Add a rating</h2>
+<%= render partial: 'ratings/form' %>

@@ -1,7 +1,6 @@
 class WinesController < ApplicationController
 
   def index
-    @new_wine = Wine.new
     @wines = Wine.reverse_sort
     respond_to do |format|
       format.html { render :index }
@@ -11,6 +10,7 @@ class WinesController < ApplicationController
 
   def show
     @wine = Wine.find_by(id: params[:id])
+    @rating = @wine.ratings.build
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @wine}

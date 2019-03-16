@@ -1,12 +1,4 @@
-<% if @rating.errors.any? %>
-  <div class="notice alert-warning">
-      <p>There were some errors:</p>
-      <br>
-        <% @rating.errors.full_messages.each do |message| %>
-          <p><%= message %></p>
-        <% end %>
-    </div>
-<% end %>
+
 <br>
   <div class="form-horizontal">
   <%= form_for [@rating] do |f| %>
@@ -39,7 +31,7 @@
     </div>
 
     <div>
-      <%= f.submit %>
+      <%= f.submit id: "newRatingSubmit" %>
     </div>
 <% end %>
 </div>
