@@ -21,6 +21,31 @@ function getWineDetail(wine) {
     event.preventDefault();
     $(`#wineDetail-${wine.id}`).empty;
     $(`#wineDetail-${wine.id}`).html(wine.wineDetails())
+    $(`#ratings-${wine.id}`).on('click', () => getWineRatings(wine));
+}
+
+function getWineRatings(wine) {
+    event.preventDefault()
+    $.ajax({
+        url: "/wines/" + wine.id + "/ratings",
+        method: 'get',
+        dataType: 'json'
+    }).done(function(response) {
+        for (const rating of response) {
+            console.log(rating["stars"], rating["comments"]);
+            let thisRating = new Rating(rating);
+            let addRating = thisRating.ratingDetails();
+            $(`#wine-${thisRating.id}-ratings`) += (addRating);
+        }
+        // $.each(response, function(index, rating) {
+        //     console.log(index, rating)
+        //     let thisRating = new Rating(rating);
+        //     console.log(rating["comments"])
+        //     let addRating = thisRating.ratingDetails();
+        //     console.log(thisRating.ratingDetails())
+        //     $(`#wine-${thisRating.id}-ratings`).append(addRating);
+        // });
+    });
 }
 
 
@@ -60,13 +85,13 @@ class Wine {
     }
 }
 
-// Rating.prototype.postHTML = function() {
-//     return ( `
-//         <p>${this.stars}</p>
-//         <p>${this.comments}</p>
-//         <p>${this.taste}</p>
-//     ` )
-// }
+Rating.prototype.ratingDetails = function() {
+    return (`
+        <p>Stars: ${this.stars}</p>
+        <p>Comments: ${this.comments}</p>
+        <p>Tasting notes: ${this.taste}</p>
+    `)
+}
 
 Wine.prototype.wineName = function() {
     return (`
@@ -82,10 +107,13 @@ Wine.prototype.wineName1 = function() {
 Wine.prototype.wineDetails = function() {
     return (`
         <p>${this.region}</p>
-        <p>${this.category}</p>
-        <p>${this.ratings.length}</p>
+        <p>Category: ${this.category}</p>
+        <p>Ratings: ${this.ratings.length}</p>
+        <a href=#" id="ratings-${this.id}">See ratings</a>
+        <div id="wine-${this.id}-ratings"></div>
     `)
 }
+
 
 function newWine() {
     event.preventDefault()
