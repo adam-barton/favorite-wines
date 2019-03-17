@@ -1,4 +1,5 @@
 class RatingsController < ApplicationController
+  require 'pry'
 
   before_action :find_rating, only: [:show, :edit, :update]
 
@@ -38,7 +39,8 @@ class RatingsController < ApplicationController
     #   flash[:message] = "You've already reviewed this wine."
     #   redirect_to wine_rating_path(@rating.wine_id, @rating)
     # else
-      @rating = Rating.create(rating_params)
+      @rating = Rating.new(rating_params)
+      @rating.user_id = current_user.id
       @rating.save
         # if @rating.save
           # redirect_to wine_rating_path(@rating.wine, @rating)
@@ -66,7 +68,7 @@ class RatingsController < ApplicationController
 private
 
   def rating_params
-    params.require(:rating).permit(:stars, :taste, :comments, :wine_id, :user_id)
+    params.require(:rating).permit(:stars, :taste, :comments, :wine_id)
   end
 
   def find_rating

@@ -79,7 +79,6 @@ function addRating(wine) {
 
 
 function createModal(data) {
-    // debugger
     return (`
     <div class="modal-header">
       <h2>New Rating for ${data.name}</h2>
@@ -87,8 +86,8 @@ function createModal(data) {
     <div class="modal-body">
     <form class="new_rating" id="new_rating" action="/ratings" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="8UVbZ1DA/xq/QsaWd64Cu7/lgW3pV3DogFANIDW1HFTTwfw4rTwx+kC+gUZmHn5gb4N4+V45iRtYKLPGI98bNQ==">
       <div>
-          <input type="hidden" name="rating[wine_id]" id="rating_wine_id" value="${data.id}">
-          <input type="hidden" name="rating[user_id]" id="rating_user_id">
+        <input type="hidden" name="rating[wine_id]" id="rating_wine_id" value="${data.id}">
+        
       </div>
 
     <div class="form-group">  
