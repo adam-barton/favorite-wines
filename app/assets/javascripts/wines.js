@@ -39,10 +39,14 @@ const getWineRatings = (wine) => {
             method: 'get',
             dataType: 'json'
         }).done(function(response) {
+            // debugger
+            let ratingSpace = $(`#wine-ratings-${response[0].wine.id}`)
+            ratingSpace.empty();
             for (const rating of response) {
                 let thisRating = new Rating(rating);
                 let addRating = thisRating.ratingDetails();
-                $(`#wine-ratings-${thisRating.wine_id}`).append(addRating);
+                ratingSpace.append(addRating);
+                // $(`#wine-ratings-${thisRating.wine_id}`).append(addRating);
             }
         });
     } // -- end --
@@ -100,7 +104,7 @@ Rating.prototype.ratingDetails = function() {
 // ADDS WINE NAME - FOR INDEX VIEW
 Wine.prototype.wineName = function() {
         return (`
-        <h2><a href="#" id="wine-ID-${this.id}">${this.name}</a></h2>    
+        <h2><a href="#" id="wine-ID-${this.id}">${this.name}</a></h2>  
         <div id="wineDetail-${this.id}"></div>
         <hr>
     `)
@@ -113,6 +117,8 @@ Wine.prototype.wineDetails = function() {
         <p>Category: ${this.category}</p>
         <p>Ratings: ${this.ratings.length}</p>
         <a href=#" id="ratings-${this.id}">See ratings</a> | <a href="#" id="add-rating-${this.id}" data-id="wine-${this.id}">Add a rating</a>
+        <div class="rating-space"> 
         <div id="wine-ratings-${this.id}"></div>
+        </div>
     `)
     } // -- end --
