@@ -87,12 +87,10 @@ function createModal(data) {
     <form class="new_rating" id="new_rating" action="/ratings" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="8UVbZ1DA/xq/QsaWd64Cu7/lgW3pV3DogFANIDW1HFTTwfw4rTwx+kC+gUZmHn5gb4N4+V45iRtYKLPGI98bNQ==">
       <div>
         <input type="hidden" name="rating[wine_id]" id="rating_wine_id" value="${data.id}">
-        
       </div>
 
-    <div class="form-group">  
-      <label class="col-md-4 control-label" for="rating_stars">Stars</label>
-       <div class="col-md-4">
+    <div>  
+      <label for="rating_stars">Stars</label>
         <select name="rating[stars]" id="rating_stars"><option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -100,25 +98,26 @@ function createModal(data) {
           <option value="5">5</option></select>
       </div>
     </div>
-    
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="rating_Tasting Notes">Tasting notes</label>
-      <div class="col-md-4"> 
-        <textarea class="form-control" name="rating[taste]" id="rating_taste"></textarea>
+    <br>
+    <div>
+      <label for="rating_Tasting Notes">Tasting notes</label>
+      <div> 
+        <textarea name="rating[taste]" id="rating_taste"></textarea>
       </div>
     </div>
-
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="rating_comments">Comments</label>
-      <div class="col-md-4"> 
-        <textarea class="form-control" name="rating[comments]" id="rating_comments"></textarea>
+    <br>
+    <div>
+      <label for="rating_comments">Comments</label>
+      <div> 
+        <textarea name="rating[comments]" id="rating_comments"></textarea>
       </div>
     </div>
-
+    <br>
       <div>
         <input type="submit" name="commit" value="Create Rating" id="modalRatingSubmit">
       </div>
     </form>
+    <br>
     <div class="modal-footer">
         <p></p>
     </div>

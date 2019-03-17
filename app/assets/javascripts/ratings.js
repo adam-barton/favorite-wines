@@ -60,7 +60,7 @@ function attachEventListeners() {
 class Rating {
     constructor(obj) {
         this.id = obj.id
-        this.user_id = obj.user.id
+        this.user = obj.user
         this.wine_id = obj.wine.id
         this.stars = obj.stars
         this.comments = obj.comments
@@ -87,10 +87,11 @@ class Wine {
 // ADDS RATING INDEX AND SHOW DETAILS
 Rating.prototype.ratingDetails = function() {
         return (`
-        <div id="individual-rating">
+        <div class="individual-rating">
         <p>Stars: ${this.stars}</p>
         <p><strong>Comments: ${this.comments}</strong></p>
         <p>Tasting notes: ${this.taste}</p>
+        <p>By: ${this.user.name}</p>
         </div>
     `)
 
