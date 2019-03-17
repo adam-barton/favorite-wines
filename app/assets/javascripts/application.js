@@ -17,3 +17,4 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require ratings
+//= require modal_form

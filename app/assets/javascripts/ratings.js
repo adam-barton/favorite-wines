@@ -26,25 +26,25 @@ function getWineDetail(wine) {
     $(`#wineDetail-${wine.id}`).empty;
     $(`#wineDetail-${wine.id}`).html(wine.wineDetails())
     $(`#ratings-${wine.id}`).on('click', () => getWineRatings(wine));
-    // $(`#add-rating-${wine.id}`).on('click', () => addRating(wine));
+    $(`.add-rating`).on('click', () => addRating(wine));
 } // -- end --
 
 
 // ADDS WINE RATINGS INDEX 
-function getWineRatings(wine) {
-    event.preventDefault()
-    $.ajax({
-        url: "/wines/" + wine.id + "/ratings",
-        method: 'get',
-        dataType: 'json'
-    }).done(function(response) {
-        for (const rating of response) {
-            let thisRating = new Rating(rating);
-            let addRating = thisRating.ratingDetails();
-            $(`#wine-ratings-${thisRating.wine_id}`).append(addRating);
-        }
-    });
-} // -- end --
+const getWineRatings = (wine) => {
+        event.preventDefault()
+        $.ajax({
+            url: "/wines/" + wine.id + "/ratings",
+            method: 'get',
+            dataType: 'json'
+        }).done(function(response) {
+            for (const rating of response) {
+                let thisRating = new Rating(rating);
+                let addRating = thisRating.ratingDetails();
+                $(`#wine-ratings-${thisRating.wine_id}`).append(addRating);
+            }
+        });
+    } // -- end --
 
 
 
@@ -110,7 +110,7 @@ Wine.prototype.wineDetails = function() {
         <p>${this.region}</p>
         <p>Category: ${this.category}</p>
         <p>Ratings: ${this.ratings.length}</p>
-        <a href=#" id="ratings-${this.id}">See ratings</a> | <a href=#" id="add-rating-${this.id}">Add a rating</a>
+        <a href=#" id="ratings-${this.id}">See ratings</a> | <a href="#" class="add-rating" data-id="${this.id}">Add a rating</a>
         <div id="wine-ratings-${this.id}"></div>
     `)
     } // -- end --
