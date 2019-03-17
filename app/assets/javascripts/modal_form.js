@@ -11,15 +11,14 @@ function addRating(wine) {
     // Get the <span> element that closes the modal
     let span = document.getElementsByClassName("close")[0];
 
-    let submitButton = document.getElementById('newRatingSubmit');
+    // btn.onclick = function() {
+    modal.style.display = "block";
+    let form = createModal(wine)
+    let bodyArea = $('.modal-content');
+    bodyArea.append(form)
 
-    // When the user clicks the button, open the modal 
-    btn.onclick = function() {
-        modal.style.display = "block";
-        let form = createModal(wine)
-        let bodyArea = $('.modal-content');
-        bodyArea.append(form)
-    }
+    // $('#modalRatingSubmit').on('click', () => submitFormData().bind(this));
+    // }
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
@@ -32,13 +31,51 @@ function addRating(wine) {
             modal.style.display = "none";
         }
     }
-
-    // submitButton.onclick = function(event) {
-    //     event.preventDefault();
-    //     alert("Hello from modal.js")
-    // }
 }
 
+
+// function submitFormData(form) {
+//     event.preventDefault()
+//     console.log("this: " + this)
+//     console.log("form: " + form)
+//     alert('Hi')
+//     debugger
+//     let values = $(this).serialize();
+//     let postRating = $.post(`/ratings`, values)
+
+//     postRating.done(function(response) {
+//         $("#new-stars").text("Stars: " + response["stars"])
+//         $("#new-comments").text(response["comments"])
+//         $("#new-tasting").text(response["taste"])
+//     });
+// }
+
+// function submitFormData() {
+//     event.preventDefault();
+//     alert("Hello from modal.js");
+//     console.log('this: ' + this)
+//     let values = $(this).serialize();
+//     console.log(values)
+//     debugger
+// }
+
+
+// const submitFormData = () => {
+//     event.preventDefault();
+
+//     alert("Hello from modal.js");
+//     console.log('this: ' + this)
+//     let values = $(this).serialize();
+//     console.log(values)
+//     debugger
+//     let postRating = $.post(`/ratings`, values)
+
+//     postRating.done(function(response) {
+//         $("#new-stars").text("Stars: " + response["stars"])
+//         $("#new-comments").text(response["comments"])
+//         $("#new-tasting").text(response["taste"])
+//     });
+// }
 
 
 function createModal(data) {
@@ -80,12 +117,25 @@ function createModal(data) {
     </div>
 
       <div>
-        <input type="submit" name="commit" value="Create Rating" id="newRatingSubmit" data-disable-with="Create Rating" disabled="">
+        <input type="submit" name="commit" value="Create Rating" id="modalRatingSubmit">
       </div>
     </form>
     <div class="modal-footer">
         <p></p>
     </div>
-    `)
 
+    <script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('form').submit(function(event) {
+      event.preventDefault();
+      let values = $(this).serialize();
+      let postRating = $.post('/ratings', values)
+
+      postRating.done(function(response) {
+        getWineRatings(response.wine)
+      });
+    });
+  });
+</script>
+    `)
 }

@@ -25,6 +25,7 @@
   $(function () {
     $('form').submit(function(event) {
       event.preventDefault();
+      debugger
       let values = $(this).serialize();
       let postRating = $.post(`/ratings`, values)
 
