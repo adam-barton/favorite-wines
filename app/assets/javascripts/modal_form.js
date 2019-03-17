@@ -1,8 +1,7 @@
 function addRating(wine) {
     event.preventDefault();
-    console.log("Event:  " + event)
-    console.log(wine)
-        // Get the modal
+
+    // Get the modal
     let modal = document.getElementById('myModal');
 
     // Get the button that opens the modal
@@ -15,15 +14,16 @@ function addRating(wine) {
     modal.style.display = "block";
     let form = createModal(wine)
     let bodyArea = $('.modal-content');
-    bodyArea.append(form)
+    bodyArea.html(form)
 
     // $('#modalRatingSubmit').on('click', () => submitFormData().bind(this));
     // }
 
+
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
+    // span.onclick = function() {
+    //     modal.style.display = "none";
+    // }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
@@ -129,9 +129,9 @@ function createModal(data) {
     $('form').submit(function(event) {
       event.preventDefault();
       let values = $(this).serialize();
-      let postRating = $.post('/ratings', values)
-
-      postRating.done(function(response) {
+      console.log(values)
+      let postRating = $.post('/ratings', values, function(response) {
+          console.log(response)
         getWineRatings(response.wine)
       });
     });

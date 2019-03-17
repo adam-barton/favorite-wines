@@ -34,18 +34,19 @@ class RatingsController < ApplicationController
   end
 
   def create
-    if @rating = Rating.find_by(user_id: current_user.id, wine_id: params[:rating][:wine_id]) 
-      flash[:message] = "You've already reviewed this wine."
-      redirect_to wine_rating_path(@rating.wine_id, @rating)
-    else
+    # if @rating = Rating.find_by(user_id: current_user.id, wine_id: params[:rating][:wine_id]) 
+    #   flash[:message] = "You've already reviewed this wine."
+    #   redirect_to wine_rating_path(@rating.wine_id, @rating)
+    # else
       @rating = Rating.create(rating_params)
+      @rating.save
         # if @rating.save
           # redirect_to wine_rating_path(@rating.wine, @rating)
           render json: @rating, status: 201
         # else
         #   render :new
         # end
-    end
+    # end
   end
 
   def edit
