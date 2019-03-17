@@ -18,6 +18,10 @@ class UsersController < ApplicationController
     end
 
   def show
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: current_user}
+    end
   end
 
     private

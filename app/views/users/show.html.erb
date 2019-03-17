@@ -10,3 +10,13 @@
 <br>
 <p> <%= link_to "Add a new wine", new_wine_path, class: "btn btn-primary" %> </p>
 <p> <%= link_to "Add a new rating", new_rating_path, class: "btn btn-primary" %> </p>
+<hr>
+<hr>
+<hr>
+<hr>
+<div id="userWineList" class="list-group">
+</div>
+
+<script>
+$(getUserWines())
+</script>
