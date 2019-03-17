@@ -27,7 +27,7 @@ class WinesController < ApplicationController
     if @wine.valid?
       @wine.name = @wine.full_name
       @wine.save
-      redirect_to @wine
+      redirect_to wines_path
     else
       render :new
     end
