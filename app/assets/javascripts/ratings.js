@@ -23,10 +23,11 @@ function getWines() {
 // ADDS WINE SHOW DETAILS
 function getWineDetail(wine) {
     event.preventDefault();
-    $(`#wineDetail-${wine.id}`).empty;
+    let detailSpace = $(`#wineDetail-${wine.id}`);
+    detailSpace.empty();
     $(`#wineDetail-${wine.id}`).html(wine.wineDetails())
     $(`#ratings-${wine.id}`).on('click', () => getWineRatings(wine));
-    $(`.add-rating`).on('click', () => addRating(wine));
+    $(`#add-rating-${wine.id}`).on('click', () => addRating(wine));
 } // -- end --
 
 
@@ -110,7 +111,7 @@ Wine.prototype.wineDetails = function() {
         <p>${this.region}</p>
         <p>Category: ${this.category}</p>
         <p>Ratings: ${this.ratings.length}</p>
-        <a href=#" id="ratings-${this.id}">See ratings</a> | <a href="#" class="add-rating" data-id="${this.id}">Add a rating</a>
+        <a href=#" id="ratings-${this.id}">See ratings</a> | <a href="#" id="add-rating-${this.id}" data-id="wine-${this.id}">Add a rating</a>
         <div id="wine-ratings-${this.id}"></div>
     `)
     } // -- end --
