@@ -106,7 +106,7 @@ Rating.prototype.ratingDetails = function() {
 // ADDS WINE NAME - FOR INDEX VIEW
 Wine.prototype.wineName = function() {
         return (`
-        <h2><a href="#" id="wine-ID-${this.id}">${this.name}</a></h2>  
+        <h3><a href="#" id="wine-ID-${this.id}">${this.name}</a></h3>  
         <div id="wineDetail-${this.id}"></div>
         <hr>
     `)

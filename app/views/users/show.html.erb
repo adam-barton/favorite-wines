@@ -1,19 +1,9 @@
 
 <h1><%= @current_user.name %></h1>
-
-<div class="list-group"> 
-  <h3>Your reviews:</h3>
-    <% @current_user.ratings.each do |r| %>
-      <h4 class="list-group-item"><%= link_to wine_name(r.wine), wine_rating_path(r.wine, r.id) %> - <%= show_stars(r.stars) %></h4>
-    <% end %>
-</div>
 <br>
 <p> <%= link_to "Add a new wine", new_wine_path, class: "btn btn-primary" %> </p>
-<p> <%= link_to "Add a new rating", new_rating_path, class: "btn btn-primary" %> </p>
-<hr>
-<hr>
-<hr>
-<hr>
+<br>
+<h2>Your wines</h2>
 <div id="userWineList" class="list-group">
 </div>
 

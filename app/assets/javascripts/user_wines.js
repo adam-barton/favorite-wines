@@ -1,5 +1,4 @@
 function getUserWines() {
-    // alert("You've hit the new file.")
     let wineSpace = $(`#userWineList`);
 
     $.ajax({
@@ -7,13 +6,16 @@ function getUserWines() {
         method: 'get',
         dataType: 'json'
     }).done(function(data) {
-
         for (const wine of data.wines) {
             let thisWine = new Wine(wine);
             let addWine = thisWine.wineName();
             $('#userWineList').append(addWine);
-            // $(`#wine-ID-${thisWine.id}`).on('click', () => getWineDetail(thisWine))
+            $(`#wine-ID-${thisWine.id}`).on('click', () => getWineDetails(thisWine))
         }
     });
+}
 
+function getWineDetails(wine) {
+    event.preventDefault();
+    console.log(wine)
 }
