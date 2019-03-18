@@ -28,7 +28,7 @@ function getWineDetails(wine) {
     }).done(function(response) {
         for (const rating of response) {
             if (rating.user.id === parseInt(location.pathname.slice(-1))) {
-                ratingSpace.append(`<p>Stars: ${rating.stars}</p>`)
+                ratingSpace.html(`<p>Stars: ${rating.stars}</p>`)
             };
         };
     });

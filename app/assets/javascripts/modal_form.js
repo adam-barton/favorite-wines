@@ -16,14 +16,6 @@ function addRating(wine) {
     let bodyArea = $('.modal-content');
     bodyArea.html(form)
 
-    // $('#modalRatingSubmit').on('click', () => submitFormData().bind(this));
-    // }
-
-
-    // When the user clicks on <span> (x), close the modal
-    // span.onclick = function() {
-    //     modal.style.display = "none";
-    // }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
@@ -33,49 +25,6 @@ function addRating(wine) {
     }
 }
 
-
-// function submitFormData(form) {
-//     event.preventDefault()
-//     console.log("this: " + this)
-//     console.log("form: " + form)
-//     alert('Hi')
-//     debugger
-//     let values = $(this).serialize();
-//     let postRating = $.post(`/ratings`, values)
-
-//     postRating.done(function(response) {
-//         $("#new-stars").text("Stars: " + response["stars"])
-//         $("#new-comments").text(response["comments"])
-//         $("#new-tasting").text(response["taste"])
-//     });
-// }
-
-// function submitFormData() {
-//     event.preventDefault();
-//     alert("Hello from modal.js");
-//     console.log('this: ' + this)
-//     let values = $(this).serialize();
-//     console.log(values)
-//     debugger
-// }
-
-
-// const submitFormData = () => {
-//     event.preventDefault();
-
-//     alert("Hello from modal.js");
-//     console.log('this: ' + this)
-//     let values = $(this).serialize();
-//     console.log(values)
-//     debugger
-//     let postRating = $.post(`/ratings`, values)
-
-//     postRating.done(function(response) {
-//         $("#new-stars").text("Stars: " + response["stars"])
-//         $("#new-comments").text(response["comments"])
-//         $("#new-tasting").text(response["taste"])
-//     });
-// }
 
 
 function createModal(data) {
@@ -127,9 +76,7 @@ function createModal(data) {
     $('form').submit(function(event) {
       event.preventDefault();
       let values = $(this).serialize();
-      console.log(values)
       let postRating = $.post('/ratings', values, function(response) {
-          console.log(response)
         getWineRatings(response.wine)
       });
     });
