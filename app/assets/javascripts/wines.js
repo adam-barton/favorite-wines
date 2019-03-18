@@ -34,19 +34,20 @@ function getWineDetail(wine) {
 // ADDS WINE RATINGS INDEX 
 const getWineRatings = (wine) => {
         event.preventDefault()
-            // let space = $('.wine-rating-space')
-            // space.empty();
+        let space = $('.wine-rating-space')
+        space.empty();
         $.ajax({
             url: "/wines/" + wine.id + "/ratings",
             method: 'get',
             dataType: 'json'
         }).done(function(response) {
             // debugger
-            let ratingSpace = $(`#wine-ratings-${response[0].wine.id}`)
-            ratingSpace.empty();
+
+            // ratingSpace.empty();
             for (const rating of response) {
                 let thisRating = new Rating(rating);
                 let addRating = thisRating.ratingDetails();
+                let ratingSpace = $(`#wine-ratings-${response[0].wine.id}`)
                 ratingSpace.append(addRating);
                 // $(`#wine-ratings-${thisRating.wine_id}`).append(addRating);
             }
@@ -119,8 +120,8 @@ Wine.prototype.wineDetails = function() {
         <p>Category: ${this.category}</p>
         <p>Ratings: ${this.ratings.length}</p>
         <a href=#" id="ratings-${this.id}">See ratings</a> | <a href="#" id="add-rating-${this.id}" data-id="wine-${this.id}">Add a rating</a>
-        <div class="wine-rating-space"> 
-        <div id="wine-ratings-${this.id}"></div>
+        <div> 
+        <div class="wine-rating-space" id="wine-ratings-${this.id}"></div>
         </div>
     `)
     } // -- end --
