@@ -80,6 +80,7 @@ function createModal(data) {
       let postRating = $.post('/ratings', values, function(response) {
           console.log(response)
         getWineRatings(response.wine)
+        document.getElementById('myModal').style.display = "none";
       });
     });
   });
