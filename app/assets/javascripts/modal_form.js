@@ -73,10 +73,13 @@ function createModal(data) {
 
     <script type="text/javascript" charset="utf-8">
   $(function () {
-    $('form').submit(function(event) {
+
+    $('#modalRatingSubmit').on('click', function(event) {
       event.preventDefault();
       let values = $(this).serialize();
+      console.log(values)
       let postRating = $.post('/ratings', values, function(response) {
+          console.log(response)
         getWineRatings(response.wine)
       });
     });
