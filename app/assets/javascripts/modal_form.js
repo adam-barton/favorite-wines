@@ -45,7 +45,6 @@ function createModal(data) {
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option></select>
-      </div>
     </div>
     <br>
     <div>
@@ -74,7 +73,7 @@ function createModal(data) {
     <script type="text/javascript" charset="utf-8">
   $(function () {
 
-    $('#modalRatingSubmit').on('click', function(event) {
+    $('form').submit(function(event) {
       event.preventDefault();
       let values = $(this).serialize();
       console.log(values)
