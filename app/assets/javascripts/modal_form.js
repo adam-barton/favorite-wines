@@ -37,7 +37,7 @@ function createModal(data) {
       <div>
         <input type="hidden" name="rating[wine_id]" id="rating_wine_id" value="${data.id}">
       </div>
-
+<br>
     <div>  
       <label for="rating_stars">Stars</label>
         <select name="rating[stars]" id="rating_stars"><option value="1">1</option>
@@ -72,13 +72,10 @@ function createModal(data) {
 
     <script type="text/javascript" charset="utf-8">
   $(function () {
-
     $('form').submit(function(event) {
       event.preventDefault();
       let values = $(this).serialize();
-      console.log(values)
       let postRating = $.post('/ratings', values, function(response) {
-          console.log(response)
         getWineRatings(response.wine)
         document.getElementById('myModal').style.display = "none";
       });
