@@ -32,6 +32,38 @@ function getWineDetail(wine) {
 } // -- end --
 
 
+const sortButton = () => {
+    event.preventDefault();
+    $.ajax({
+        url: "/wines",
+        method: 'get',
+        dataType: 'json'
+    }).done(function(data) {
+        console.log(data)
+        let newArray = []
+        for (const wine of data) {
+            let thisWine = new Wine(wine);
+            newArray.push(thisWine)
+        }
+        newArray.sort(function(a, b) {
+            let nameA = a.name.toUpperCase(); // ignore upper and lowercase
+            let nameB = b.name.toUpperCase(); // ignore upper and lowercase
+            if (nameA < nameB) {
+                return -1;
+            }
+            if (nameA > nameB) {
+                return 1;
+            }
+
+            // names must be equal
+            return 0;
+        });
+        console
+        debugger
+    })
+}
+
+
 // ADDS WINE RATINGS INDEX 
 const getWineRatings = (wine) => {
         event.preventDefault()
@@ -55,6 +87,7 @@ const getWineRatings = (wine) => {
 
 // ADDS EVENT LISTENERS AT Document.ready
 function attachEventListeners() {
+    $(`#sort-button`).on('click', () => sortButton());
     // $('.previous').on('click', () => previousGames());
     // $('#newRatingSubmit').on('click', () => newRating());
 } // -- end --
