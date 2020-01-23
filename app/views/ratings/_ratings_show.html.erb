@@ -1,0 +1,10 @@
+<%# <h1> <%= wine_name(rating.wine) %> </h1>
+<%# <h2>Review by: <%= rating.user.name %></h2>
+<h2> <%= show_stars(rating.stars) %> </h2>
+<h4>Comments: </h4>
+<p><%= rating.comments %></p>
+<h4>Tasting Notes: </h4>
+<p><%= rating.taste %></p>
+<% if current_user == rating.user %>
+  <%= link_to "Edit Review", edit_wine_rating_path(rating.wine, rating) if rating.wine %>
+<% end %>

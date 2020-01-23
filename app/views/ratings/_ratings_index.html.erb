@@ -1,0 +1,21 @@
+<% if params[:wine_id] %>
+  <h1><%= @ratings.first.wine.name %></h1>
+  <% else %>
+  <h1>Ratings</h1>
+  <% end %>
+<ul class="list-group">
+  <% @wine.ratings.each do |rating| %>
+    <li class="list-group-item"> <br>
+      Rating: <%= show_stars(rating.stars) %> <br>
+       User: <%=  rating.user.name %>
+          <%= render partial: 'ratings/ratings_show', locals: {rating: rating} %>
+     <%# <br> <%= link_to "Read the review", wine_rating_path(rating.wine, rating) %></li>
+    <% end %>
+    </ul>
+    <br>
+
+    <% if params[:wine_id] %>
+        <p><%= link_to "New rating", new_wine_rating_path(params[:wine_id]), class: "btn btn-primary" %></p>
+      <% else %>
+        <p> <%= link_to "Add a new rating", new_rating_path, class: "btn btn-primary" %> </p>
+      <% end %>

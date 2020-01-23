@@ -12,7 +12,8 @@
   <p class="list-group-item"><b>Average Rating:</b> <%= show_stars(@wine.average_rating) %>  </p><br>
 </div>
 <% if !@wine.ratings.empty? %>
-  <h3><%= link_to "Read reviews", wine_ratings_path(@wine) %></h3>
+  <%# <h3><%= link_to "Read reviews", wine_ratings_path(@wine) %></h3>
+    <%= render partial: 'ratings/ratings_index' %>
   <% end %>
 <br>
   <% if !@wine.users.include?(current_user) %>
